@@ -1,5 +1,5 @@
 ## `gitlinks` - Git Powered Go Links!
-Map memorable keys to URLS using Git and [GitHub Pages)](https://pages.github.com).
+Map memorable keys to URLS using Git and [GitHub Pages)](https://pages.github.com): `pip install gitlinks`.
 
 ## Quick Overview
 `gitlinks` is a command line tool that maps keys to URLS via 
@@ -26,7 +26,7 @@ We can also organize keys through nesting, such as with `classes/NLP`.
 
 ## Shoutouts
 - Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
-- Michael Yang ([Twitter](https://twitter.com/themichaelyang), [Website](http://yang.money)) - for some massive PRs and aesthetics expertise
+- Michael Yang ([Twitter](https://twitter.com/themichaelyang), [Website](http://yang.money)) - for some massive PRs and aesthetics expertise!
 
 ## License
 GPL v3
