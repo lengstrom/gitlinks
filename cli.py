@@ -124,7 +124,7 @@ def main(args):
     try:
         print('=> Committing and pushing...')
         commit_push(repo, commit_msg[:50])
-        print(f'=> Success: {commit_msg}')
+        print(f'=> Success: {commit_msg}.')
     except Exception as e:
         repo.git.reset('--hard',f'origin/{repo.active_branch}')
         print(f'=> Failed; rolling back.')
