@@ -98,6 +98,7 @@ def execute(args, git_path=GIT_PATH):
 
     if args['set']:
         key = args['<key>'][0]
+        assert key[-1] != '/', f'Key "{key}" should not end with a "/"!'
         url = args['<url>']
         df = set_link(key, url, df)
         commit_msg = f'Set key "{key}" {ARROW} "{url}"'

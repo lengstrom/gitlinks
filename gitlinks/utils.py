@@ -91,7 +91,7 @@ def generate_pages(df, working_dir, index_name):
     iterator = df.iterrows()
     for _, row in iterator:
         key, url = row.key, row.url
-        html_file = wd / (key + '.html')
+        html_file = wd / (key + '/index.html')
         parent = html_file.parent
         if not parent in parent_cache:
             parent.mkdir(exist_ok=True, parents=True)
