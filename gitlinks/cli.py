@@ -28,7 +28,7 @@ from .utils import (
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
-ARROW = '==>'
+ARROW = '->'
 
 def initialize(url, path=GIT_PATH):
     if path.exists():
@@ -63,7 +63,7 @@ def show(df, repo):
     df = df[df.columns[new_order]]
     df = df.sort_values('key')
 
-    title = f'=> GitLinks Index (Remote: {repo.remotes.origin.url})'
+    title = f'== GitLinks (Remote: {repo.remotes.origin.url}) =='
     print(title)
     if df.shape[0] > 0:
         tab = tabulate.tabulate(df, df.columns, colalign=('left', 'center', 'left'),
@@ -88,14 +88,13 @@ def execute(args, git_path=GIT_PATH):
     csv_path = git_path / INDEX_NAME
     df = load_csv(csv_path)
 
-    if args['show']:
-        return show(df, repo)
-    
     reset_origin(repo)
     clean(repo)
-
     print('=> Checking for changes from remote...')
     repo.remotes.origin.pull()
+
+    if args['show']:
+        return show(df, repo)
 
     if args['set']:
         key = args['<key>'][0]
