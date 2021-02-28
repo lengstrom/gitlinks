@@ -1,7 +1,6 @@
 ## `gitlinks` - Git Powered Go Links!
 Map memorable keys to URLS using Git and [GitHub Pages)](https://pages.github.com).
 
-
 ## Quick Overview
 `gitlinks` is a command line tool that maps keys to URLS via 
 <a href="https://git-scm.com">Git</a> and [GitHub Pages](https://pages.github.com).
@@ -19,13 +18,16 @@ he (or any other user) can then access it at
 (since the GitHub pages site `lengstrom.github.io` maps to `loganengstrom.com`).
 We can also organize keys through nesting, such as with `classes/NLP`.
 
-
 ## EZ Setup
 - Make a new repository at https://github.com/new with a short, memorable name (Remember: a shortlink `<key>` will reside at
 `<username>.github.io/<repository name>/<key>`).
+- Install the `gitlinks` executable via `pip`: `pip install gitlinks`
 - 
 
-
+## Shoutouts
+- Michael Yang
+- Noah Moroze
+- Shoutouts to: @tony peng 
 
 ## License
 GPL v3
