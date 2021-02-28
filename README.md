@@ -21,8 +21,8 @@ We can also organize keys through nesting, such as with `classes/NLP`.
 
 
 ## EZ Setup
-- Go to https://github.com/new and make a new repository with a short, memorable name (Your shortlinks will reside at
-<username>.github.io/<repository name>/<link key>).
+- Go to https://github.com/new and make a new repository with a short, memorable name (Remember: your shortlinks will reside at
+`<username>.github.io/<repository name>/<link key>`).
 - 
 
 
