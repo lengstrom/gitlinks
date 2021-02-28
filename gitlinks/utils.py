@@ -7,6 +7,8 @@ import sys
 from pathlib import Path
 import tqdm
 
+ARROW = '→'
+
 def empty_csv():
     return pd.DataFrame({
         'key':[],
@@ -88,6 +90,7 @@ def generate_pages(df, working_dir, index_name):
 
     print('=> Rebuilding HTML...')
     iterator = df.iterrows()
+    inner_list = []
     for _, row in iterator:
         key, url = row.key, row.url
         html_file = wd / (key + '/index.html')
@@ -96,6 +99,24 @@ def generate_pages(df, working_dir, index_name):
 
         with open(html_file, 'w+') as f:
             f.write(template_maker(url))
+
+        inner_list.append(f'<tr><td><a href="{key}">{key}</a></td><td>{ARROW}</td><td><a href="{url}">{url}</a></td></li>')
+
+    with open(wd / 'index.html', 'w+') as index_file:
+        index_file.write(f'''
+<title>gitlinks</title>
+<style>
+body {{
+    font-family: -apple-system, BlinkMacSystemFont, Helvetica, Segoe UI, Arial, sans-serif;
+    padding: 24px;
+    line-height: 1.5;
+}}
+a {{ color: black }}
+td:nth-child(1) {{ text-align: right }}
+</style>
+<h1>gitlinks</h1>
+<table><tbody>{"".join(reversed(inner_list))}</tbody></table>
+''')
 
 import requests
 def url_exists(url):
@@ -132,7 +153,7 @@ def patch_url(url):
             print(f'=> No schema given for URL "{url}"!')
             msg = f'No valid schema for given URL! Did you mean "http://{url}"?'
             raise ValueError(msg)
- 
+
 # This is from StackOverflow.
 def query_yes_no(question, default="yes"):
     """Ask a yes/no question via raw_input() and return their answer.
