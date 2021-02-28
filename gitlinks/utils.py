@@ -112,6 +112,7 @@ body {{
     line-height: 1.5;
 }}
 a {{ color: black }}
+td:nth-child(1) {{ text-align: right }}
 </style>
 <h1>gitlinks</h1>
 <table><tbody>{"".join(reversed(inner_list))}</tbody></table>
