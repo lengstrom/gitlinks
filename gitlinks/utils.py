@@ -100,7 +100,7 @@ def generate_pages(df, working_dir, index_name):
         with open(html_file, 'w+') as f:
             f.write(template_maker(url))
 
-        inner_list.append(f'<li><a href="{key}">{key}</a> {ARROW} <a href="{url}" style="color:gray">{url}</a></li>')
+        inner_list.append(f'<li><a href="{key}">{key}</a> {ARROW} <a href="{url}">{url}</a></li>')
 
     with open(wd / 'index.html', 'w+') as index_file:
         index_file.write(f'''
@@ -111,6 +111,7 @@ body {{
     padding: 24px;
     line-height: 1.5;
 }}
+a {{ color: black }}
 </style>
 <h1>gitlinks</h1>
 <ul>{"".join(reversed(inner_list))}</ul>
