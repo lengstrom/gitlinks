@@ -104,6 +104,7 @@ def generate_pages(df, working_dir, index_name):
         out_filepath = parent / 'index.html'
 
         ls = sorted(ls, key=lambda x:x[0])
+        print(ls)
         direds = [k for k in ls if k[2] == 'dired']
         keys = [k for k in ls if k[2] != 'dired']
 
