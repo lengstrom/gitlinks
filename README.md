@@ -50,7 +50,7 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 </p>
 <img src="static/remote_url.png"/>
 <p>
-    Finally, add and remove link mappings through the command line!
+    Then, you can add, remove, and visualize link mappings through the command line:
 </p>
 
 ```
@@ -59,6 +59,12 @@ $ gitlinks set zoom https://mit.zoom.us/j/95091088705
   => Rebuilding HTML...
   => Committing and pushing...
   => Success: Set key "zoom" → "https://mit.zoom.us/j/95091088705".
+$ gitlinks show
+  => Checking for changes from remote...
+  == GitLinks (Remote: git@github.com:lengstrom/go.git) ==
+  classes/nlp     →   https://canvas.mit.edu/courses/7503
+  unadversarial   →   https://arxiv.org/abs/2012.12235
+  zoom            →   https://mit.zoom.us/j/95091088705
 ```
 
 # Shoutouts

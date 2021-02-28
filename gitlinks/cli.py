@@ -113,7 +113,7 @@ def execute(args, git_path=GIT_PATH):
             msg = '=> Key{plural} {keys_pretty} not present...'
             print(plural_msg(not_deletable, msg))
 
-        commit_msg = plural_msg(deletable, '=> Removed key{plural} {keys_pretty}')
+        commit_msg = plural_msg(deletable, '=> Deleted key{plural} {keys_pretty}')
         if len(deletable) == 0:
             print('=> No keys to remove, exiting!')
             return
