@@ -1,4 +1,4 @@
-# `gitlinks` - Git Powered Go Links!
+# `gitlinks` - Git Powered GoLinks!
 <p align = 'center'>
     Map memorable keys to URLS using Git and <a href="https://pages.github.com">GitHub Pages</a>.
     <br/>
@@ -8,9 +8,11 @@
 </p>
 
 # Quick Overview
+<p>
 `gitlinks` is a command line tool that maps keys to URLs via 
 <a href="https://git-scm.com">Git</a> and [GitHub Pages](https://pages.github.com).
 The following table shows example mappings for user `lengstrom`:
+</p>
 
 | Key           | Url                                                                                   | GitHub Pages Reference                                                                        |
 | :------------ | :------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
