@@ -52,13 +52,14 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 <p>
     Finally, add and remove link mappings through the command line!
 </p>
-<code>
+
+```
 $ gitlinks set zoom https://mit.zoom.us/j/95091088705                                                                                                                                  ✔  10289  18:11:38
     => Checking for changes from remote...
     => Rebuilding HTML...
     => Committing and pushing...
     => Success: Set key "zoom" → "https://mit.zoom.us/j/95091088705".
-</code>
+```
 
 # Shoutouts
 - Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
