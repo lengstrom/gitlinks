@@ -1,7 +1,7 @@
-## `gitlinks` - Git Powered Go Links!
+# `gitlinks` - Git Powered Go Links!
 Map memorable keys to URLS using Git and [GitHub Pages)](https://pages.github.com): `pip install gitlinks`.
 
-## Quick Overview
+# Quick Overview
 `gitlinks` is a command line tool that maps keys to URLS via 
 <a href="https://git-scm.com">Git</a> and [GitHub Pages](https://pages.github.com).
 The following table shows example mappings for user `lengstrom`:
@@ -18,9 +18,9 @@ he (or any other user) can then access it at
 (since the GitHub pages site `lengstrom.github.io` maps to `loganengstrom.com`).
 We can also organize keys through nesting, such as with `classes/NLP`.
 
-## EZ Setup
+# EZ Setup
 Setup `gitlinks` in two easy steps!
-### Cook up a new GitHub Repository
+## First: Cook up a new GitHub Repository
 <p>
 First, open up https://github.com/new and choose a short, memorable name (Remember: a shortlink `key` will reside at
 `yourusername.github.io/repository_name/key`) for your repository. The name "go" is a nice start! 
@@ -36,15 +36,15 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 </p>
 <img style="border:1px solid black" src="static/enable_ghpages.png"/>
 
-### Initialize `gitlinks` locally
+## Initialize `gitlinks` locally
 Install the `gitlinks` executable via `pip`: `pip install gitlinks`. Then, 
 initialize `gitlinks` to use the repository above: `gitlinks init <remote url>`---where your remote URL
 can be found here:
 <img style="border:1px solid black" src="static/remote_url.png"/>
 
-## Shoutouts
+# Shoutouts
 - Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
 - Michael Yang ([Twitter](https://twitter.com/themichaelyang), [Website](http://yang.money)) - for some massive PRs and aesthetics expertise!
 
-## License
+# License
 GPL v3
