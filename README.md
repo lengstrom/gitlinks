@@ -2,7 +2,7 @@
 <p align = 'center'>
     Map memorable keys to URLS using Git and [GitHub Pages](https://pages.github.com)!
     <br/>
-    `pip install gitlinks`.
+    <code>pip install gitlinks</code>
 </p>
 
 
