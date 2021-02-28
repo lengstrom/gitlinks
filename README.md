@@ -1,4 +1,4 @@
-## `gitlinks`: Git Powered Go Links!
+## `gitlinks` - Git Powered Go Links!
 Map memorable keys to URLS using Git and [GitHub Pages)](https://pages.github.com).
 
 
