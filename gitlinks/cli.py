@@ -1,7 +1,8 @@
-"""GitLinks: GitHub pages-powered shortlinks. See: https://github.com/lengstrom/gitlinks.
+"""GitLinks: GitHub pages-powered shortlinks. See: https://github.com/lengstrom/gitlinks/
+for setup and additional usage information.
 
 Usage:
-  gitlinks init <url>
+  gitlinks init <git remote>
   gitlinks set <key> <url>
   gitlinks delete <key> ...
   gitlinks show
@@ -17,6 +18,7 @@ import tabulate
 import json
 import git
 import pandas as pd
+import sys
 from ilock import ILock
 
 from .utils import (
@@ -35,7 +37,7 @@ def initialize(url, path=GIT_PATH):
             shutil.rmtree(path)
         else:
             print('Ok, exiting...')
-            sys.exit()
+            return
 
     repo = clone(url, path)
     try_setup(repo, path, INDEX_NAME)
@@ -72,7 +74,7 @@ def show(df, repo):
 
 def execute(args, git_path=GIT_PATH):
     if args['init']:
-        return initialize(args['<url>'], path=git_path)
+        return initialize(args['<git remote>'], path=git_path)
 
     repo = git.Repo(git_path)
     if not check_repo(repo, INDEX_NAME):
@@ -125,6 +127,9 @@ def execute(args, git_path=GIT_PATH):
         raise e
 
 def main():
+    if len(sys.argv) == 1:
+        sys.argv.append('-h')
+
     args = docopt(__doc__)
     with ILock('gitlinks'):
         execute(args)
