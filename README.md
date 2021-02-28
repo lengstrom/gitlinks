@@ -15,12 +15,31 @@ The following table shows example mappings for user `lengstrom`:
 | `zoom`        | <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>     | <a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>               |
 | `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/go/classes/nlp">http://loganengstrom.com/go/classes/nlp</a> |
 
-Here, if user `lengstrom`
-maps `zoom` to <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>,
-he (or any other user) can then access it at
-<a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>
-(since the GitHub pages site `lengstrom.github.io` maps to `loganengstrom.com`).
-We can also organize keys through nesting, such as with `classes/NLP`.
+<p>
+    Here, if user `lengstrom`
+    maps `zoom` to <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>,
+    he (or any other user) can then access it at
+    <a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>
+    (since the GitHub pages site `lengstrom.github.io` maps to `loganengstrom.com`).
+    We can also organize keys through nesting, such as with `classes/NLP`.
+</p>
+<p>
+    You can add, remove, and visualize link mappings through the command line:
+</p>
+
+```
+$ gitlinks set zoom https://mit.zoom.us/j/95091088705
+  => Success: Set key "zoom" → "https://mit.zoom.us/j/95091088705".
+$ gitlinks delete zoom
+  => Success: Deleted key "zoom".
+```
+```
+$ gitlinks show
+  == GitLinks (Remote: git@github.com:lengstrom/go.git) ==
+  classes/nlp     →   https://canvas.mit.edu/courses/7503
+  unadversarial   →   https://arxiv.org/abs/2012.12235
+  zoom            →   https://mit.zoom.us/j/95091088705
+```
 
 # EZ Setup
 Setup `gitlinks` in two easy steps!
@@ -48,25 +67,6 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
     can be found here:
 </p>
 <img src="static/remote_url.png"/>
-<p>
-    Then, you can add, remove, and visualize link mappings through the command line:
-</p>
-
-```
-$ gitlinks set zoom https://mit.zoom.us/j/95091088705
-  => Checking for changes from remote...
-  => Rebuilding HTML...
-  => Committing and pushing...
-  => Success: Set key "zoom" → "https://mit.zoom.us/j/95091088705".
-```
-```
-$ gitlinks show
-  => Checking for changes from remote...
-  == GitLinks (Remote: git@github.com:lengstrom/go.git) ==
-  classes/nlp     →   https://canvas.mit.edu/courses/7503
-  unadversarial   →   https://arxiv.org/abs/2012.12235
-  zoom            →   https://mit.zoom.us/j/95091088705
-```
 
 # Shoutouts
 - Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
