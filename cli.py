@@ -3,7 +3,7 @@
 Usage:
   gitlinks init <url>
   gitlinks set <key> <url>
-  gitlinks delete <key> ...
+  gitlinks delete <key>
   gitlinks show
 
 Options:
@@ -19,7 +19,7 @@ import json
 import git
 import pandas as pd
 from utils import clone, query_yes_no, try_setup, serialize_csv, load_csv
-from utils import commit_push, check_repo, generate_pages, prettify_list
+from utils import commit_push, check_repo, generate_pages, prettify_list, clean
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
@@ -83,6 +83,9 @@ def main(args):
     if args['show']:
         return show(df, repo)
     
+    repo.git.reset('--hard', repo.active_branch)
+    clean(repo)
+
     print('=> Checking for changes from remote...')
     repo.remotes.origin.pull()
 
@@ -90,9 +93,9 @@ def main(args):
         key = args['<key>']
         url = args['<url>']
         df = set_link(key, url, df)
-        commit_msg = f'Set "{key}" -> "{url}"'
+        commit_msg = f'Set key "{key}" => "{url}"'
     elif args['delete']:
-        keys = args['<key>']
+        keys = [args['<key>']]
         poss = set(df.key)
         deletable = [k for k in keys if k in poss]
         for key in deletable:
@@ -101,13 +104,13 @@ def main(args):
         not_deletable = set(keys) - set(deletable)
         if not_deletable:
             keys_pretty = prettify_list(not_deletable)
-            print(f'=> {keys_pretty} not present...')
+            print(f'=> Key {keys_pretty} not present...')
 
         if len(deletable) > 0:
             keys_pretty = prettify_list(deletable)
-            commit_msg = f'Removed {keys_pretty}'
+            commit_msg = f'Removed key {keys_pretty}'
         else:
-            print('=> No keys to remove, exiting!')
+            print('=> No key to remove, exiting!')
             return
 
     serialize_csv(df, csv_path)

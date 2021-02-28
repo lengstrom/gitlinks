@@ -88,10 +88,9 @@ def generate_pages(df, working_dir, index_name):
 
     print('=> Rebuilding HTML...')
     parent_cache = set()
-    iterator = tqdm.tqdm(df.iterrows(), total=df.shape[0])
+    iterator = df.iterrows()
     for _, row in iterator:
         key, url = row.key, row.url
-        iterator.set_description(f'   Mapping {key} -> {url}')
         html_file = wd / (key + '.html')
         parent = html_file.parent
         if not parent in parent_cache:
