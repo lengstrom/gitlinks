@@ -31,24 +31,31 @@ First, visit https://github.com/new and choose a short, memorable name like
 <code>go</code> for your repository. Remember, a short shortlink <code>key</code> will reside at
 <code>yourusername.github.io/repository_name/key</code>!
 </p>
-<img style="border:1px solid black" src="static/make_repo.png"/>
+<img src="static/make_repo.png"/>
 <p>
 Now, check the box "Add a README file".
 </p>
-<img style="border:1px solid black" src="static/add_readme.png"/>
+<img src="static/add_readme.png"/>
 <p>
 Make the repository, then go your repository's settings (e.g. <code>https://github.com/yourusername/repository_name/settings</code>).
 Then, scroll down to the GitHub Pages section, and enable it for the `main` branch:
 </p>
-<img style="border:1px solid black" src="static/enable_ghpages.png"/>
+<img src="static/enable_ghpages.png"/>
 
 ## Initialize `gitlinks` locally
 <p>
-Install the `gitlinks` executable via `pip`: `pip install gitlinks`. Then, 
-initialize `gitlinks` to use the repository above: `gitlinks init <remote url>`---where your remote URL
-can be found here:
+    Install the `gitlinks` executable via `pip`: `pip install gitlinks`. Then, 
+    initialize `gitlinks` to use the repository above: `gitlinks init <remote url>`---where your remote URL
+    can be found here:
 </p>
-<img style="border:1px solid black" src="static/remote_url.png"/>
+<img src="static/remote_url.png"/>
+<p>
+    Finally, add and remove link mappings through the command line!
+</p>
+<img src="static/usage.png"/>
+<code>
+
+</code>
 
 # Shoutouts
 - Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
