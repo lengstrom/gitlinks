@@ -78,6 +78,9 @@ def try_setup(repo, path, index_name):
 def template_maker(url):
     return f'<meta http-equiv="refresh" content="0; URL={url}"/>'
 
+def prettify_list(ls):
+    return ", ".join(map(lambda x:f'"{x}"', ls))
+
 def generate_pages(df, working_dir, index_name):
     wd = Path(working_dir)
     protected = ['.git', index_name]

@@ -3,7 +3,7 @@
 Usage:
   gitlinks init <url>
   gitlinks set <key> <url>
-  gitlinks delete <key>
+  gitlinks delete <key> ...
   gitlinks show
 
 Options:
@@ -19,7 +19,7 @@ import json
 import git
 import pandas as pd
 from utils import clone, query_yes_no, try_setup, serialize_csv, load_csv
-from utils import commit_push, check_repo, generate_pages
+from utils import commit_push, check_repo, generate_pages, prettify_list
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
@@ -48,37 +48,24 @@ def set_link(key, url, df):
 def delete_link(key, df):
     return df[df.key != key]
 
-from anytree import Node, RenderTree
 
 def show(df, repo):
+    df['=>'] = ['=>' for _ in range(df.shape[0])]
+    new_order = [0, 2, 1]
+    df = df[df.columns[new_order]]
     df = df.sort_values('key')
 
-    root = {}
-    NODE = '___node'
-    root[NODE] = Node('GitLinks')
-    for _, row in df.iterrows():
-        components = row.key.split('/')
-        this_key = components.pop() 
-        leaf = this_key + ' => ' + row.url
-        curr = root
-        for c in components:
-            if c in curr: 
-                curr = curr[c]
-            else:
-                child = {}
-                child[NODE] = Node(c, parent=curr[NODE])
-                curr[c] = child
-                curr = curr[c]
-
-        n = Node(leaf, parent=curr[NODE])
-        curr[this_key] = {
-            NODE:n
-        }
-     
-    for pre, fill, node in RenderTree(root[NODE]):
-        print("%s%s" % (pre, node.name))
-
-    print(f'Git Remote: {repo.remotes.origin.url}')
+    x = tabulate.tabulate(df, df.columns, colalign=('left', 'center', 'left'),
+                          showindex=False)
+    width = x.split('\n')[0].index('=>') - 6
+    title = 'GitLinks Index'
+    print()
+    print(' ' * width + title)
+    x = '\n'.join(x.split('\n')[2:])
+    print('-' * max(map(len, x.split('\n'))))
+    print(x)
+    print(f'\nGit Remote: {repo.remotes.origin.url}')
+    print()
 
 def main(args):
     if args['init']:
@@ -105,9 +92,23 @@ def main(args):
         df = set_link(key, url, df)
         commit_msg = f'Set "{key}" -> "{url}"'
     elif args['delete']:
-        key = args['<key>']
-        df = delete_link(key, df)
-        commit_msg = f'Removed "{key}"'
+        keys = args['<key>']
+        poss = set(df.key)
+        deletable = [k for k in keys if k in poss]
+        for key in deletable:
+            df = delete_link(key, df)
+
+        not_deletable = set(keys) - set(deletable)
+        if not_deletable:
+            keys_pretty = prettify_list(not_deletable)
+            print(f'=> {keys_pretty} not present...')
+
+        if len(deletable) > 0:
+            keys_pretty = prettify_list(deletable)
+            commit_msg = f'Removed {keys_pretty}'
+        else:
+            print('=> No keys to remove, exiting!')
+            return
 
     serialize_csv(df, csv_path)
     generate_pages(df, GIT_PATH, INDEX_NAME)
@@ -117,7 +118,7 @@ def main(args):
         commit_push(repo, commit_msg[:50])
         print(f'=> Success: {commit_msg}')
     except Exception as e:
-        repo.git.reset('--hard','origin/master')
+        repo.git.reset('--hard',f'origin/{repo.active_branch}')
         print(f'=> Failed; rolling back.')
         raise e
 
