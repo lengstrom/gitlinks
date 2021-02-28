@@ -31,7 +31,7 @@ Now, check the box "Add a README file".
 </p>
 <img style="border:1px solid black" src="static/add_readme.png"/>
 <p>
-Make the repository, then go your repository's settings (e.g. `https://github.com/yourusername/repository_name/settings`).
+Make the repository, then go your repository's settings (e.g. <code>https://github.com/yourusername/repository_name/settings</code>).
 Then, scroll down to the GitHub Pages section, and enable it for the `main` branch:
 </p>
 <img style="border:1px solid black" src="static/enable_ghpages.png"/>
