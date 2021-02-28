@@ -17,13 +17,16 @@ import tabulate
 import json
 import git
 import pandas as pd
-from utils import clone, query_yes_no, try_setup, serialize_csv, load_csv
-from utils import commit_push, check_repo, generate_pages, plural_msg, clean
-from utils import patch_url, reset_origin
 from ilock import ILock
+
+from .utils import (
+    clone, query_yes_no, try_setup, serialize_csv, load_csv, commit_push,
+    check_repo, generate_pages, plural_msg, clean, patch_url, reset_origin
+)
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
+ARROW = '==>'
 
 def initialize(url, path=GIT_PATH):
     if path.exists():
@@ -52,7 +55,6 @@ def delete_links(keys, df):
     keys = set(keys)
     return df[~df.key.isin(keys)]
 
-ARROW = '==>'
 def show(df, repo):
     df[ARROW] = [ARROW for _ in range(df.shape[0])]
     new_order = [0, 2, 1]
@@ -93,7 +95,7 @@ def execute(args, git_path=GIT_PATH):
         key = args['<key>'][0]
         url = args['<url>']
         df = set_link(key, url, df)
-        commit_msg = f'Set key "{key}" => "{url}"'
+        commit_msg = f'Set key "{key}" {ARROW} "{url}"'
     elif args['delete']:
         keys = args['<key>']
         poss = set(df.key)
