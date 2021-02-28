@@ -21,13 +21,19 @@ We can also organize keys through nesting, such as with `classes/NLP`.
 ## EZ Setup
 Setup `gitlinks` in two easy steps!
 ### Cook up a new GitHub Repository
+<p>
 First, open up https://github.com/new and choose a short, memorable name (Remember: a shortlink `<key>` will reside at
 `<username>.github.io/<repository name>/<key>`) for your repository. The name "go" is a nice start! 
+</p>
 <img style="border:1px solid black" src="static/make_repo.png"/>
+<p>
 Now, check the box "Add a README file".
+</p>
 <img style="border:1px solid black" src="static/add_readme.png"/>
+<p>
 Make the repository, then go your repository's settings (e.g. `https://github.com/<yourusername>/<repository name>/settings`).
 Then, scroll down to the GitHub Pages section, and enable it for the `main` branch:
+</p>
 <img style="border:1px solid black" src="static/enable_ghpages.png"/>
 
 ### Initialize `gitlinks` locally
