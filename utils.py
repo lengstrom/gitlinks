@@ -99,6 +99,34 @@ def generate_pages(df, working_dir, index_name):
 
         with open(html_file, 'w+') as f:
             f.write(template_maker(url))
+
+import requests
+def url_exists(url):
+    try:
+        request = requests.get(url, timeout=0.5)
+        return True
+    except:
+        return False
+
+def patch_url(url):
+    if url[:4] == 'http':
+        return url
+    else:
+        if url_exists('https://' + url):
+            protocol = 'https://'
+        elif url_exists('http://' + url):
+            protocol = 'http://'
+        else:
+            protocol = None
+
+        if protocol:
+            patched = f'{protocol}{url}'
+            print(f'=> No schema given for {url}! Patching to {patched}...')
+            return patched
+        else:
+            print(f'=> No schema given for URL `{url}`!')
+            msg = f'No valid schema for given URL! Did you mean http://{url}?'
+            raise ValueError(msg)
  
 # This is from StackOverflow.
 def query_yes_no(question, default="yes"):

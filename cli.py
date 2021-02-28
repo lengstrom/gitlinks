@@ -20,6 +20,7 @@ import git
 import pandas as pd
 from utils import clone, query_yes_no, try_setup, serialize_csv, load_csv
 from utils import commit_push, check_repo, generate_pages, prettify_list, clean
+from utils import patch_url
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
@@ -37,6 +38,7 @@ def initialize(url, path=GIT_PATH):
     print(f'Successfully initialized gitlinks to url: {url}')
 
 def set_link(key, url, df):
+    url = patch_url(url)
     df = df[df.key != key]
     df = df.append(pd.Series({
         'key':key,
@@ -59,13 +61,11 @@ def show(df, repo):
                           showindex=False)
     width = x.split('\n')[0].index('=>') - 6
     title = 'GitLinks Index'
-    print()
     print(' ' * width + title)
     x = '\n'.join(x.split('\n')[2:])
-    print('-' * max(map(len, x.split('\n'))))
+    #print('-' * max(map(len, x.split('\n'))))
     print(x)
     print(f'\nGit Remote: {repo.remotes.origin.url}')
-    print()
 
 def main(args):
     if args['init']:
@@ -95,7 +95,12 @@ def main(args):
         df = set_link(key, url, df)
         commit_msg = f'Set key "{key}" => "{url}"'
     elif args['delete']:
-        keys = [args['<key>']]
+        key = args['<key>']
+        if ',' in key:
+            keys = key.split(',')
+        else:
+            keys = [key]
+
         poss = set(df.key)
         deletable = [k for k in keys if k in poss]
         for key in deletable:
