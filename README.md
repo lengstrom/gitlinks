@@ -3,7 +3,7 @@ Map memorable keys to URLS using Git and [GitHub Pages)](https://pages.github.co
 
 ## Quick Overview
 GitLinks maps keys to URLS via <a href="https://git-scm.com">Git</a> and [GitHub Pages](https://pages.github.com).
-The table below shows example mappings for user `lengstrom`:
+The following table shows example mappings for user `lengstrom`:
 
 | Key           | Url                                                                                   | GitHub Pages Reference                                                                        |
 | ------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
@@ -14,8 +14,8 @@ Here, if user `lengstrom`
 maps `zoom` to <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>,
 he (or any other user) can then access it at
 <a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>
-(as the GitHub pages site `lengstrom.github.io` maps to `loganengstrom.com`).
-We can also organize keys through directories, such as with `classes/NLP`.
+(since the GitHub pages site `lengstrom.github.io` maps to `loganengstrom.com`).
+We can also organize keys through nesting, such as with `classes/NLP`.
 
 ## EZ Setup
 ### Make a new repository
