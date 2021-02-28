@@ -1,13 +1,12 @@
 # `gitlinks` - Git Powered Go Links!
 <p align = 'center'>
-    Map memorable keys to URLS using Git and [GitHub Pages](https://pages.github.com)!
+    Map memorable keys to URLS using Git and <a href="https://pages.github.com">GitHub Pages</a>
     <br/>
     <code>pip install gitlinks</code>
 </p>
 
-
 # Quick Overview
-`gitlinks` is a command line tool that maps keys to URLS via 
+`gitlinks` is a command line tool that maps keys to URLs via 
 <a href="https://git-scm.com">Git</a> and [GitHub Pages](https://pages.github.com).
 The following table shows example mappings for user `lengstrom`:
 
