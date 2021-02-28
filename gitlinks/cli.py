@@ -63,14 +63,18 @@ def show(df, repo):
     df = df[df.columns[new_order]]
     df = df.sort_values('key')
 
-    tab = tabulate.tabulate(df, df.columns, colalign=('left', 'center', 'left'),
-                            showindex=False)
-    title = f'GitLinks Index (Remote: {repo.remotes.origin.url})'
-    width = tab.split('\n')[0].index(ARROW) - len(title)//2
-    width = min(0, width)
-    print(' ' * width + title)
-    rows = '\n'.join(tab.split('\n')[2:])
-    print(rows)
+    title = f'=> GitLinks Index (Remote: {repo.remotes.origin.url})'
+    print(title)
+    if df.shape[0] > 0:
+        tab = tabulate.tabulate(df, df.columns, colalign=('left', 'center', 'left'),
+                                showindex=False)
+        # width = tab.split('\n')[0].index(ARROW) - len(title)//2
+        # width = min(0, width)
+        # print(' ' * width + title)
+        rows = '\n'.join(tab.split('\n')[2:])
+        print(rows)
+    else:
+        print('=> Empty, no keys to display!')
 
 def execute(args, git_path=GIT_PATH):
     if args['init']:
