@@ -1,4 +1,4 @@
-"""GitLinks: Command line client for managing GitHub pages-powered shortlinks. 
+"""GitLinks: Command line client for managing GitHub pages-powered shortlinks.
 See https://github.com/lengstrom/gitlinks/ for setup and additional usage
 information.
 
@@ -28,7 +28,7 @@ from .utils import (
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
-ARROW = '->'
+ARROW = '→'
 
 def initialize(url, path=GIT_PATH):
     if path.exists():
