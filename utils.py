@@ -1,5 +1,4 @@
 import git
-import tqdm
 import pandas as pd
 from git import RemoteProgress
 import shutil
@@ -84,7 +83,7 @@ def generate_pages(df, working_dir, index_name):
     protected = ['.git', index_name]
     wipe_directory(wd, protected)
 
-    parent_cache = set()
+    parent_cache = defaultdict(list)
     for _, row in df.iterrows():
         key, url = row.key, row.url
         html_file = wd / (key + '.html')
@@ -92,9 +91,15 @@ def generate_pages(df, working_dir, index_name):
         if not parent in parent_cache:
             parent.mkdir(exist_ok=True)
 
-        parent_cache.add(parent)
+        parent_cache[parent].append((key.split('/')[-1], url))
+
         with open(html_file, 'w+') as f:
             f.write(template_maker(url))
+
+    for parent, ls in parent_cache.items():
+        html = '<u>'
+        ls = sorted(ls, key=)
+        for name, url in ls:
  
 # This is from StackOverflow.
 def query_yes_no(question, default="yes"):
