@@ -32,8 +32,6 @@ $ gitlinks set zoom https://mit.zoom.us/j/95091088705
   => Success: Set key "zoom" → "https://mit.zoom.us/j/95091088705".
 $ gitlinks delete zoom
   => Success: Deleted key "zoom".
-```
-```
 $ gitlinks show
   == GitLinks (Remote: git@github.com:lengstrom/go.git) ==
   classes/nlp     →   https://canvas.mit.edu/courses/7503
