@@ -25,9 +25,8 @@ We can also organize keys through nesting, such as with `classes/NLP`.
 - 
 
 ## Shoutouts
-- Michael Yang
-- Noah Moroze
-- Shoutouts to: @tony peng 
+- Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
+- Michael Yang ([Twitter](https://twitter.com/themichaelyang), [Website](http://yang.money)) - for some massive PRs and aesthetics expertise
 
 ## License
 GPL v3
