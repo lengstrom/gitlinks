@@ -108,6 +108,14 @@ def url_exists(url):
     except:
         return False
 
+def plural_msg(ls, fmt_str):
+    plural = 's' if len(ls) > 1 else ''
+    keys_pretty = prettify_list(ls)
+    return fmt_str.format(plural=plural, keys_pretty=keys_pretty)
+
+def reset_origin(repo):
+    repo.git.reset('--hard', f'origin/{repo.active_branch}')
+
 def patch_url(url):
     if url[:4] == 'http':
         return url
@@ -121,11 +129,11 @@ def patch_url(url):
 
         if protocol:
             patched = f'{protocol}{url}'
-            print(f'=> No schema given for {url}! Patching to {patched}...')
+            print(f'=> No schema given for "{url}"! Patching to "{patched}"...')
             return patched
         else:
-            print(f'=> No schema given for URL `{url}`!')
-            msg = f'No valid schema for given URL! Did you mean http://{url}?'
+            print(f'=> No schema given for URL "{url}"!')
+            msg = f'No valid schema for given URL! Did you mean "http://{url}"?'
             raise ValueError(msg)
  
 # This is from StackOverflow.

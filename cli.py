@@ -3,7 +3,7 @@
 Usage:
   gitlinks init <url>
   gitlinks set <key> <url>
-  gitlinks delete <key>
+  gitlinks delete <key> ...
   gitlinks show
 
 Options:
@@ -19,15 +19,16 @@ import json
 import git
 import pandas as pd
 from utils import clone, query_yes_no, try_setup, serialize_csv, load_csv
-from utils import commit_push, check_repo, generate_pages, prettify_list, clean
-from utils import patch_url
+from utils import commit_push, check_repo, generate_pages, plural_msg, clean
+from utils import patch_url, reset_origin
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
 
 def initialize(url, path=GIT_PATH):
     if path.exists():
-        if query_yes_no(f'{path} already exists; really delete?', default='yes'):
+        msg = f'{path} already exists; really delete?'
+        if query_yes_no(msg, default='yes'):
             shutil.rmtree(path)
         else:
             print('Ok, exiting...')
@@ -47,86 +48,77 @@ def set_link(key, url, df):
 
     return df
 
-def delete_link(key, df):
-    return df[df.key != key]
+def delete_links(keys, df):
+    keys = set(keys)
+    return df[~df.key.isin(keys)]
 
-
+ARROW = '==>'
 def show(df, repo):
-    df['=>'] = ['=>' for _ in range(df.shape[0])]
+    df[ARROW] = [ARROW for _ in range(df.shape[0])]
     new_order = [0, 2, 1]
     df = df[df.columns[new_order]]
     df = df.sort_values('key')
 
-    x = tabulate.tabulate(df, df.columns, colalign=('left', 'center', 'left'),
-                          showindex=False)
-    width = x.split('\n')[0].index('=>') - 6
-    title = 'GitLinks Index'
+    tab = tabulate.tabulate(df, df.columns, colalign=('left', 'center', 'left'),
+                            showindex=False)
+    title = f'GitLinks Index (Remote: {repo.remotes.origin.url})'
+    width = tab.split('\n')[0].index(ARROW) - len(title)//2
+    width = min(0, width)
     print(' ' * width + title)
-    x = '\n'.join(x.split('\n')[2:])
-    #print('-' * max(map(len, x.split('\n'))))
-    print(x)
-    print(f'\nGit Remote: {repo.remotes.origin.url}')
+    rows = '\n'.join(tab.split('\n')[2:])
+    print(rows)
 
-def main(args):
+def main(args, git_path=GIT_PATH):
     if args['init']:
-        return initialize(args['<url>'])
+        return initialize(args['<url>'], path=git_path)
 
-    repo = git.Repo(GIT_PATH)
-
+    repo = git.Repo(git_path)
     if not check_repo(repo, INDEX_NAME):
         msg = "No initialized repo; run `gitlinks init <url>` first!"
         raise ValueError(msg)
 
-    csv_path = GIT_PATH / INDEX_NAME
+    csv_path = git_path / INDEX_NAME
     df = load_csv(csv_path)
 
     if args['show']:
         return show(df, repo)
     
-    repo.git.reset('--hard', repo.active_branch)
+    reset_origin(repo)
     clean(repo)
 
     print('=> Checking for changes from remote...')
     repo.remotes.origin.pull()
 
     if args['set']:
-        key = args['<key>']
+        key = args['<key>'][0]
         url = args['<url>']
         df = set_link(key, url, df)
         commit_msg = f'Set key "{key}" => "{url}"'
     elif args['delete']:
-        key = args['<key>']
-        if ',' in key:
-            keys = key.split(',')
-        else:
-            keys = [key]
-
+        keys = args['<key>']
         poss = set(df.key)
         deletable = [k for k in keys if k in poss]
-        for key in deletable:
-            df = delete_link(key, df)
+        df = delete_links(deletable, df)
 
         not_deletable = set(keys) - set(deletable)
         if not_deletable:
-            keys_pretty = prettify_list(not_deletable)
-            print(f'=> Key {keys_pretty} not present...')
+            msg = '=> Key{plural} {keys_pretty} not present...'
+            print(plural_msg(not_deletable, msg))
 
-        if len(deletable) > 0:
-            keys_pretty = prettify_list(deletable)
-            commit_msg = f'Removed key {keys_pretty}'
-        else:
-            print('=> No key to remove, exiting!')
+        commit_msg = plural_msg(deletable, '=> Removed key{plural} {keys_pretty}')
+        if len(deletable) == 0:
+            print('=> No keys to remove, exiting!')
             return
 
     serialize_csv(df, csv_path)
-    generate_pages(df, GIT_PATH, INDEX_NAME)
+    generate_pages(df, git_path, INDEX_NAME)
 
     try:
         print('=> Committing and pushing...')
         commit_push(repo, commit_msg[:50])
         print(f'=> Success: {commit_msg}.')
     except Exception as e:
-        repo.git.reset('--hard',f'origin/{repo.active_branch}')
+        reset_origin(repo)
         print(f'=> Failed; rolling back.')
         raise e
 
