@@ -1,4 +1,4 @@
-"""GitLinks: git-based shortlinks. See: https://github.com/lengstrom/gitlinks.
+"""GitLinks: GitHub pages-powered shortlinks. See: https://github.com/lengstrom/gitlinks.
 
 Usage:
   gitlinks init <url>

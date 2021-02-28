@@ -1,6 +1,6 @@
 import git
-import pandas as pd
 from git import RemoteProgress
+import pandas as pd
 import shutil
 import sys
 from pathlib import Path
@@ -25,8 +25,6 @@ class CloneProgress(RemoteProgress):
 def clone(url, path):
     prog = CloneProgress()
     return git.Repo.clone_from(url, path, progress=prog)
-
-import traceback
 
 def commit_push(repo, commit_msg):
     repo.git.add(all=True)
