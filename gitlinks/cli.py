@@ -10,7 +10,6 @@ Options:
   -h --help     Show this screen.
   -v --version  Show version.
 """
-from ilock import ILock
 from docopt import docopt
 from pathlib import Path
 import shutil
@@ -21,6 +20,7 @@ import pandas as pd
 from utils import clone, query_yes_no, try_setup, serialize_csv, load_csv
 from utils import commit_push, check_repo, generate_pages, plural_msg, clean
 from utils import patch_url, reset_origin
+from ilock import ILock
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
@@ -122,8 +122,10 @@ def main(args, git_path=GIT_PATH):
         print(f'=> Failed; rolling back.')
         raise e
 
-if __name__ == '__main__':
+def exec_main():
     args = docopt(__doc__)
-
     with ILock('gitlinks'):
         main(args)
+
+if __name__ == '__main__':
+    exec_main()
