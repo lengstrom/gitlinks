@@ -16,15 +16,15 @@ The following table shows example mappings for user `lengstrom`:
 | `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/go/classes/nlp">http://loganengstrom.com/go/classes/nlp</a> |
 
 <p>
-    Here, if user `lengstrom`
-    maps `zoom` to <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>,
+    Here, if user <code>lengstrom</code>
+    maps <code>zoom</code> to <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>,
     he (or any other user) can then access it at
     <a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>
-    (since the GitHub pages site `lengstrom.github.io` maps to `loganengstrom.com`).
-    We can also organize keys through nesting, such as with `classes/NLP`.
+    (since the GitHub pages site <code>lengstrom.github.io</code> maps to <code>loganengstrom.com</code>).
+    We can also organize keys through nesting, such as with <code>classes/NLP</code>.
 </p>
 <p>
-    You can add, remove, and visualize link mappings through the command line:
+    Add, remove, and visualize link mappings through the command line!
 </p>
 
 ```
