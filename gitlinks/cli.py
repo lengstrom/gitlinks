@@ -36,7 +36,7 @@ def initialize(url, path=GIT_PATH):
         if query_yes_no(msg, default='yes'):
             shutil.rmtree(path)
         else:
-            print('Ok, exiting...')
+            print('Ok, exiting.')
             return
 
     repo = clone(url, path)
