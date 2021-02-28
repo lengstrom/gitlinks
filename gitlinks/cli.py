@@ -1,5 +1,6 @@
-"""GitLinks: GitHub pages-powered shortlinks. See: https://github.com/lengstrom/gitlinks/
-for setup and additional usage information.
+"""GitLinks: Command line client for managing GitHub pages-powered shortlinks. 
+See https://github.com/lengstrom/gitlinks/ for setup and additional usage
+information.
 
 Usage:
   gitlinks init <git remote>
@@ -9,7 +10,6 @@ Usage:
 
 Options:
   -h --help     Show this screen.
-  -v --version  Show version.
 """
 from docopt import docopt
 from pathlib import Path
