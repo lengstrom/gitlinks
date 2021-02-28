@@ -1,4 +1,4 @@
-# `gitlinks` - Git Powered GoLinks!
+# `gitlinks` - Git Powered Go Links!
 <p align = 'center'>
     Map memorable keys to URLS using Git and <a href="https://pages.github.com">GitHub Pages</a>.
     <br/>
