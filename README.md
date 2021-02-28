@@ -6,7 +6,7 @@ GitLinks maps keys to URLS via <a href="https://git-scm.com">Git</a> and [GitHub
 The following table shows example mappings for user `lengstrom`:
 
 | Key           | Url                                                                                   | GitHub Pages Reference                                                                        |
-| ------------- | ------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- |
+| :------------ | :------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
 | `zoom`        | <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>     | <a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>               |
 | `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/go/classes/nlp">http://loganengstrom.com/go/classes/nlp</a> |
 
