@@ -7,6 +7,8 @@ import sys
 from pathlib import Path
 import tqdm
 
+ARROW = '→'
+
 def empty_csv():
     return pd.DataFrame({
         'key':[],
@@ -98,7 +100,7 @@ def generate_pages(df, working_dir, index_name):
         with open(html_file, 'w+') as f:
             f.write(template_maker(url))
 
-        inner_list.append(f'<li><a href="{key}">{key}</a> :: <a href="{url}" style="color:gray">{url}</a></li>')
+        inner_list.append(f'<li><a href="{key}">{key}</a> {ARROW} <a href="{url}" style="color:gray">{url}</a></li>')
 
     with open(wd / 'index.html', 'w+') as index_file:
         index_file.write(f'''

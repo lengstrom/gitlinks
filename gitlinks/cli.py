@@ -23,12 +23,12 @@ from ilock import ILock
 
 from .utils import (
     clone, query_yes_no, try_setup, serialize_csv, load_csv, commit_push,
-    check_repo, generate_pages, plural_msg, clean, patch_url, reset_origin
+    check_repo, generate_pages, plural_msg, clean, patch_url, reset_origin,
+    ARROW
 )
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
-ARROW = '→'
 
 def initialize(url, path=GIT_PATH):
     if path.exists():
