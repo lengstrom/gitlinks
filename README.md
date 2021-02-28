@@ -2,7 +2,7 @@
 <p align = 'center'>
     Map memorable keys to URLS using Git and <a href="https://pages.github.com">GitHub Pages</a>
     <br/>
-    <code>pip install gitlinks</code>
+    <code>pip install gitlinks</code> (<a href="#setup">Jump to setup!</a>)
 </p>
 
 # Quick Overview
@@ -43,7 +43,7 @@ $ gitlinks show
   zoom            →   https://mit.zoom.us/j/95091088705
 ```
 
-# EZ Setup
+# Setup
 Setup `gitlinks` in two easy steps!
 ## First: Cook up a new GitHub Repository
 <p>

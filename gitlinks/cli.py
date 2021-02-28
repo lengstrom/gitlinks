@@ -1,5 +1,5 @@
 """GitLinks: Command line client for managing GitHub pages-powered shortlinks.
-See https://github.com/lengstrom/gitlinks/ for setup and additional usage
+See https://github.com/lengstrom/gitlinks#setup for setup and additional usage
 information.
 
 Usage:
