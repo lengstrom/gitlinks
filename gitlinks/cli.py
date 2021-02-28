@@ -68,7 +68,7 @@ def show(df, repo):
     rows = '\n'.join(tab.split('\n')[2:])
     print(rows)
 
-def main(args, git_path=GIT_PATH):
+def execute(args, git_path=GIT_PATH):
     if args['init']:
         return initialize(args['<url>'], path=git_path)
 
@@ -122,10 +122,10 @@ def main(args, git_path=GIT_PATH):
         print(f'=> Failed; rolling back.')
         raise e
 
-def exec_main():
+def main():
     args = docopt(__doc__)
     with ILock('gitlinks'):
-        main(args)
+        execute(args)
 
 if __name__ == '__main__':
-    exec_main()
+    main()
