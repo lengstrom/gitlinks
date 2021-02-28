@@ -1,4 +1,5 @@
 import git
+from collections import defaultdict
 from git import RemoteProgress
 import pandas as pd
 import shutil
@@ -87,17 +88,42 @@ def generate_pages(df, working_dir, index_name):
         html_file = wd / (key + '.html')
         parent = html_file.parent
         if not parent in parent_cache:
-            parent.mkdir(exist_ok=True)
+            parent.mkdir(exist_ok=True, parents=True)
 
-        parent_cache[parent].append((key.split('/')[-1], url))
+        parent_cache[parent].append((key.split('/')[-1], url, 'key'))
 
         with open(html_file, 'w+') as f:
             f.write(template_maker(url))
 
+    for parent, _ in list(parent_cache.items()):
+        while parent != wd:
+            parent_cache[parent.parent] = (parent.name, parent.name, 'dired')
+            parent = parent.parent
+
     for parent, ls in parent_cache.items():
-        html = '<u>'
-        ls = sorted(ls, key=)
-        for name, url in ls:
+        out_filepath = parent / 'index.html'
+
+        ls = sorted(ls, key=lambda x:x[0])
+        direds = [k for k in ls if k[2] == 'dired']
+        keys = [k for k in ls if k[2] != 'dired']
+
+        strs = add_links(direds, 'Directories', is_dired=True)
+        keys = add_links(keys, 'Links', is_dired=False)
+
+        html = ''.join(strs + keys)
+        with open(out_filepath, 'w+') as f:
+            f.write(html)
+
+def add_links(keys, header, is_dired=False):
+    strs = [f'<h3>{header}</h3><br><ul>']
+    for name, url, _ in keys:
+        if not is_dired:
+            item = f'<li><a href="{url}">{name}</a> &#x2192; <a href="{url}">{url}</a></li>'
+        else:
+            item = f'<li><a href="{url}/">{name}/</a></li>'
+        strs.append(item)
+    strs.append('</ul>')
+    return strs
  
 # This is from StackOverflow.
 def query_yes_no(question, default="yes"):

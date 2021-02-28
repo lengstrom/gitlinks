@@ -53,6 +53,7 @@ def show(df, repo):
     new_order = [0, 2, 1]
     df = df[df.columns[new_order]]
     df = df.rename(lambda x:x.upper(), axis=1)
+    df = df.sort_values('KEY')
     print(df.to_string(index=False)) #, justify=['right', 'center', 'left']))
     print('')
     print(f'Git Remote: {repo.remotes.origin.url}')
