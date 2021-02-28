@@ -23,7 +23,7 @@ Setup `gitlinks` in two easy steps!
 ## First: Cook up a new GitHub Repository
 <p>
 First, visit https://github.com/new and choose a short, memorable name like
-<code>go</code> for your repository (unless you are a Golang developer). Remember, a short shortlink <code>key</code> will reside at
+<code>go</code> for your repository. Remember, a short shortlink <code>key</code> will reside at
 <code>yourusername.github.io/repository_name/key</code>!
 </p>
 <img style="border:1px solid black" src="static/make_repo.png"/>
@@ -38,9 +38,11 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 <img style="border:1px solid black" src="static/enable_ghpages.png"/>
 
 ## Initialize `gitlinks` locally
+<p>
 Install the `gitlinks` executable via `pip`: `pip install gitlinks`. Then, 
 initialize `gitlinks` to use the repository above: `gitlinks init <remote url>`---where your remote URL
 can be found here:
+</p>
 <img style="border:1px solid black" src="static/remote_url.png"/>
 
 # Shoutouts
