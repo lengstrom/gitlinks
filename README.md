@@ -19,10 +19,22 @@ he (or any other user) can then access it at
 We can also organize keys through nesting, such as with `classes/NLP`.
 
 ## EZ Setup
-- Make a new repository at https://github.com/new with a short, memorable name (Remember: a shortlink `<key>` will reside at
-`<username>.github.io/<repository name>/<key>`).
-- Install the `gitlinks` executable via `pip`: `pip install gitlinks`
-- 
+Setup `gitlinks` in two easy steps!
+### Cook up a new GitHub Repository
+First, open up https://github.com/new and choose a short, memorable name (Remember: a shortlink `<key>` will reside at
+`<username>.github.io/<repository name>/<key>`) for your repository. The name "go" is a nice start! 
+<img src="static/make_repo.png"/>
+Now, check the box "Add a README file".
+<img src="static/add_readme.png"/>
+Make the repository, then go your repository's settings (e.g. `https://github.com/<yourusername>/<repository name>/settings`).
+Then, scroll down to the GitHub Pages section, and enable it for the `main` branch:
+<img src="static/enable_ghpages.png"/>
+
+### Initialize `gitlinks` locally
+Install the `gitlinks` executable via `pip`: `pip install gitlinks`. Then, 
+initialize `gitlinks` to use the repository above: `gitlinks init <remote url>`---where your remote URL
+can be found here:
+<img src="static/remote_url.png"/>
 
 ## Shoutouts
 - Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
