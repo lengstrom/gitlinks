@@ -14,6 +14,7 @@ from ilock import ILock
 from docopt import docopt
 from pathlib import Path
 import shutil
+import tabulate
 import json
 import git
 import pandas as pd
@@ -47,15 +48,36 @@ def set_link(key, url, df):
 def delete_link(key, df):
     return df[df.key != key]
 
-def show(df, repo):
-    df['->'] = ['->' for _ in range(df.shape[0])]
+from anytree import Node, RenderTree
 
-    new_order = [0, 2, 1]
-    df = df[df.columns[new_order]]
-    df = df.rename(lambda x:x.upper(), axis=1)
-    df = df.sort_values('KEY')
-    print(df.to_string(index=False)) #, justify=['right', 'center', 'left']))
-    print('')
+def show(df, repo):
+    df = df.sort_values('key')
+
+    root = {}
+    NODE = '___node'
+    root[NODE] = Node('GitLinks')
+    for _, row in df.iterrows():
+        components = row.key.split('/')
+        this_key = components.pop() 
+        leaf = this_key + ' => ' + row.url
+        curr = root
+        for c in components:
+            if c in curr: 
+                curr = curr[c]
+            else:
+                child = {}
+                child[NODE] = Node(c, parent=curr[NODE])
+                curr[c] = child
+                curr = curr[c]
+
+        n = Node(leaf, parent=curr[NODE])
+        curr[this_key] = {
+            NODE:n
+        }
+     
+    for pre, fill, node in RenderTree(root[NODE]):
+        print("%s%s" % (pre, node.name))
+
     print(f'Git Remote: {repo.remotes.origin.url}')
 
 def main(args):
@@ -63,6 +85,7 @@ def main(args):
         return initialize(args['<url>'])
 
     repo = git.Repo(GIT_PATH)
+
     if not check_repo(repo, INDEX_NAME):
         msg = "No initialized repo; run `gitlinks init <url>` first!"
         raise ValueError(msg)
@@ -72,26 +95,30 @@ def main(args):
 
     if args['show']:
         return show(df, repo)
+    
+    print('=> Checking for changes from remote...')
+    repo.remotes.origin.pull()
 
     if args['set']:
         key = args['<key>']
         url = args['<url>']
         df = set_link(key, url, df)
-        commit_msg = f'Set {key} -> {url}'
+        commit_msg = f'Set "{key}" -> "{url}"'
     elif args['delete']:
         key = args['<key>']
         df = delete_link(key, df)
-        commit_msg = f'Removed {key}'
+        commit_msg = f'Removed "{key}"'
 
     serialize_csv(df, csv_path)
     generate_pages(df, GIT_PATH, INDEX_NAME)
 
     try:
+        print('=> Committing and pushing...')
         commit_push(repo, commit_msg[:50])
-        print(f'Success: {commit_msg}')
+        print(f'=> Success: {commit_msg}')
     except Exception as e:
         repo.git.reset('--hard','origin/master')
-        print(f'Failed; rolling back')
+        print(f'=> Failed; rolling back.')
         raise e
 
 if __name__ == '__main__':

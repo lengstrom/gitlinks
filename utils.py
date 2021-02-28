@@ -5,6 +5,7 @@ import pandas as pd
 import shutil
 import sys
 from pathlib import Path
+import tqdm
 
 def empty_csv():
     return pd.DataFrame({
@@ -82,49 +83,20 @@ def generate_pages(df, working_dir, index_name):
     protected = ['.git', index_name]
     wipe_directory(wd, protected)
 
-    parent_cache = defaultdict(list)
-    for _, row in df.iterrows():
+    print('=> Rebuilding HTML...')
+    parent_cache = set()
+    iterator = tqdm.tqdm(df.iterrows(), total=df.shape[0])
+    for _, row in iterator:
         key, url = row.key, row.url
+        iterator.set_description(f'   Mapping {key} -> {url}')
         html_file = wd / (key + '.html')
         parent = html_file.parent
         if not parent in parent_cache:
             parent.mkdir(exist_ok=True, parents=True)
-
-        parent_cache[parent].append((key.split('/')[-1], url, 'key'))
+        parent_cache.add(parent)
 
         with open(html_file, 'w+') as f:
             f.write(template_maker(url))
-
-    for parent, _ in list(parent_cache.items()):
-        while parent != wd:
-            parent_cache[parent.parent] = (parent.name, parent.name, 'dired')
-            parent = parent.parent
-
-    for parent, ls in parent_cache.items():
-        out_filepath = parent / 'index.html'
-
-        ls = sorted(ls, key=lambda x:x[0])
-        print(ls)
-        direds = [k for k in ls if k[2] == 'dired']
-        keys = [k for k in ls if k[2] != 'dired']
-
-        strs = add_links(direds, 'Directories', is_dired=True)
-        keys = add_links(keys, 'Links', is_dired=False)
-
-        html = ''.join(strs + keys)
-        with open(out_filepath, 'w+') as f:
-            f.write(html)
-
-def add_links(keys, header, is_dired=False):
-    strs = [f'<h3>{header}</h3><br><ul>']
-    for name, url, _ in keys:
-        if not is_dired:
-            item = f'<li><a href="{url}">{name}</a> &#x2192; <a href="{url}">{url}</a></li>'
-        else:
-            item = f'<li><a href="{url}/">{name}/</a></li>'
-        strs.append(item)
-    strs.append('</ul>')
-    return strs
  
 # This is from StackOverflow.
 def query_yes_no(question, default="yes"):
