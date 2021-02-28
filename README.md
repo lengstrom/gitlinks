@@ -22,8 +22,9 @@ We can also organize keys through nesting, such as with `classes/NLP`.
 Setup `gitlinks` in two easy steps!
 ## First: Cook up a new GitHub Repository
 <p>
-First, open up https://github.com/new and choose a short, memorable name (Remember: a shortlink `key` will reside at
-`yourusername.github.io/repository_name/key`) for your repository. The name "go" is a nice start! 
+First, visit https://github.com/new and choose a short, memorable name like
+<code>go</code> for your repository (unless you are a Golang developer). Remember, a short shortlink <code>key</code> will reside at
+<code>yourusername.github.io/repository_name/key</code>!
 </p>
 <img style="border:1px solid black" src="static/make_repo.png"/>
 <p>
