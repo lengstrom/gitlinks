@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='gitlinks',  
-    version='0.1',
+    version='0.1.1',
     author='Logan Engstrom',
     author_email='logan@mit.edu',
     description='GitHub pages-powered shortlinks.',
