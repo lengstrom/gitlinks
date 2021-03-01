@@ -4,7 +4,7 @@
     <br/>
     <code>pip install gitlinks</code>
     <br/>
-    <p>
+    <p align = 'center'>
     <img src="static/demo.gif"/>
     </p>
     <p align = 'center'>
