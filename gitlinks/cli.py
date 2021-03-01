@@ -41,7 +41,7 @@ def initialize(url, path=GIT_PATH):
 
     repo = clone(url, path)
     try_setup(repo, path, INDEX_NAME)
-    pprint(f'Initialized gitlinks to url: {url}!')
+    pprint(f'Initialized gitlinks via {url}!')
 
 def set_link(key, url, df):
     url = patch_url(url)
