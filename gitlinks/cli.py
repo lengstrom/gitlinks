@@ -1,5 +1,5 @@
 """GitLinks: Command line client for managing GitHub pages-powered shortlinks.
-See https://github.com/lengstrom/gitlinks for setup and additional usage
+See https://github.com/lengstrom/gitlinks#setup for setup and additional usage
 information.
 
 Usage:
@@ -24,7 +24,7 @@ from ilock import ILock
 from .utils import (
     clone, query_yes_no, try_setup, serialize_csv, load_csv, commit_push,
     check_repo, generate_pages, plural_msg, clean, patch_url, reset_origin,
-    ARROW
+    ARROW, bolded, pprint
 )
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
@@ -36,12 +36,12 @@ def initialize(url, path=GIT_PATH):
         if query_yes_no(msg, default='yes'):
             shutil.rmtree(path)
         else:
-            print('Ok, exiting.')
+            pprint('Ok, exiting.')
             return
 
     repo = clone(url, path)
     try_setup(repo, path, INDEX_NAME)
-    print(f'Initialized gitlinks to url: {url}!')
+    pprint(f'Initialized gitlinks to url: {url}!')
 
 def set_link(key, url, df):
     url = patch_url(url)
@@ -63,7 +63,8 @@ def show(df, repo):
     df = df[df.columns[new_order]]
     df = df.sort_values('key')
 
-    title = f'== GitLinks (Remote: {repo.remotes.origin.url}) =='
+    rurl = repo.remotes.origin.url
+    title = bolded(f'== GitLinks (Remote: {rurl}) ==')
     print(title)
     if df.shape[0] > 0:
         tab = tabulate.tabulate(df, df.columns, colalign=('left', 'center', 'left'),
@@ -74,14 +75,16 @@ def show(df, repo):
         rows = '\n'.join(tab.split('\n')[2:])
         print(rows)
     else:
-        print('=> Empty, no keys to display!')
+        pprint('Empty, no keys to display!')
 
 def execute(args, git_path=GIT_PATH):
     if args['init']:
         return initialize(args['<git_remote>'], path=git_path)
 
-    repo = git.Repo(git_path)
-    if not check_repo(repo, INDEX_NAME):
+    try:
+        repo = git.Repo(git_path)
+        assert check_repo(repo, INDEX_NAME)
+    except:
         msg = "No initialized repo; run `gitlinks init <url>` first!"
         raise ValueError(msg)
 
@@ -90,7 +93,7 @@ def execute(args, git_path=GIT_PATH):
 
     reset_origin(repo)
     clean(repo)
-    print('=> Checking for changes from remote...')
+    pprint(f'Checking for changes from remote...')
     repo.remotes.origin.pull()
 
     if args['show']:
@@ -101,7 +104,7 @@ def execute(args, git_path=GIT_PATH):
         assert key[-1] != '/', f'Key "{key}" should not end with a "/"!'
         url = args['<url>']
         df = set_link(key, url, df)
-        commit_msg = f'Set key "{key}" {ARROW} "{url}"'
+        commit_msg = f'Set key "{bolded(key)}" {bolded(ARROW)} "{bolded(url)}"'
     elif args['delete']:
         keys = args['<key>']
         poss = set(df.key)
@@ -110,24 +113,24 @@ def execute(args, git_path=GIT_PATH):
 
         not_deletable = set(keys) - set(deletable)
         if not_deletable:
-            msg = '=> Key{plural} {keys_pretty} not present...'
-            print(plural_msg(not_deletable, msg))
+            msg = 'Key{plural} {keys_pretty} not present...'
+            pprint(plural_msg(not_deletable, msg))
 
-        commit_msg = plural_msg(deletable, '=> Deleted key{plural} {keys_pretty}')
+        commit_msg = plural_msg(deletable, 'Deleted key{plural} {keys_pretty}')
         if len(deletable) == 0:
-            print('=> No keys to remove, exiting!')
+            pprint('No keys to remove, exiting!')
             return
 
     serialize_csv(df, csv_path)
     generate_pages(df, git_path, INDEX_NAME)
 
     try:
-        print('=> Committing and pushing...')
+        pprint('Committing and pushing...')
         commit_push(repo, commit_msg[:50])
-        print(f'=> Success: {commit_msg}.')
+        pprint(f'{bolded("Success")}: {commit_msg}.')
     except Exception as e:
         reset_origin(repo)
-        print(f'=> Failed; rolling back.')
+        pprint(f'Failed; rolling back.')
         raise e
 
 def main():

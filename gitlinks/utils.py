@@ -10,6 +10,13 @@ import requests
 
 ARROW = '→'
 
+def pprint(x):
+    msg = bolded('=> ') + x
+    print(msg)
+
+def bolded(x):
+    return "\033[1m" + x + "\033[0m"
+
 def empty_csv():
     return pd.DataFrame({
         'key':[],
@@ -66,7 +73,7 @@ def try_setup(repo, path, index_name):
     index_path = path / index_name
 
     if not check_repo(repo, index_name):
-        print('Index not found; initializing index!')
+        pprint('Index not found; initializing index!')
         # delete everything in directory
         wipe_directory(path, ['.git'])
 
@@ -75,21 +82,21 @@ def try_setup(repo, path, index_name):
         try:
             commit_push(repo, 'Initialization')
         except Exception as e:
-            print('Remote update failed; try initializing again!')
+            pprint('Remote update failed; try initializing again!')
             raise e
 
 def template_maker(url):
     return f'<meta http-equiv="refresh" content="0; URL={url}"/>'
 
 def prettify_list(ls):
-    return ", ".join(map(lambda x:f'"{x}"', ls))
+    return ", ".join(map(lambda x:f'"{bolded(x)}"', ls))
 
 def generate_pages(df, working_dir, index_name):
     wd = Path(working_dir)
     protected = ['.git', index_name]
     wipe_directory(wd, protected)
 
-    print('=> Rebuilding HTML...')
+    pprint('Rebuilding HTML...')
     iterator = df.sort_values('key').iterrows()
     inner_list = []
     for _, row in iterator:
@@ -147,10 +154,10 @@ def patch_url(url):
 
         if protocol:
             patched = f'{protocol}{url}'
-            print(f'=> No schema given for "{url}"! Patching to "{patched}"...')
+            pprint(f'No schema given for "{url}"! Patching to "{patched}"...')
             return patched
         else:
-            print(f'=> No schema given for URL "{url}"!')
+            pprint(f'No schema given for URL "{url}"!')
             msg = f'No valid schema for given URL! Did you mean "http://{url}"?'
             raise ValueError(msg)
 
