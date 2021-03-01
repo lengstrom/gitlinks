@@ -1,9 +1,9 @@
 """GitLinks: Command line client for managing GitHub pages-powered shortlinks.
-See https://github.com/lengstrom/gitlinks#setup for setup and additional usage
+See https://github.com/lengstrom/gitlinks for setup and additional usage
 information.
 
 Usage:
-  gitlinks init <git remote>
+  gitlinks init <git_remote>
   gitlinks set <key> <url>
   gitlinks delete <key> ...
   gitlinks show
@@ -78,7 +78,7 @@ def show(df, repo):
 
 def execute(args, git_path=GIT_PATH):
     if args['init']:
-        return initialize(args['<git remote>'], path=git_path)
+        return initialize(args['<git_remote>'], path=git_path)
 
     repo = git.Repo(git_path)
     if not check_repo(repo, INDEX_NAME):
