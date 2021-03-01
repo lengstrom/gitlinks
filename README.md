@@ -16,19 +16,20 @@
 <p>
 <code>gitlinks</code> is a command line tool that maps keys to URLs via 
 <a href="https://git-scm.com">Git</a> and <a href="https://pages.github.com">GitHub Pages</a>.
-The following table shows example mappings for user <code>lengstrom</code>:
+The following table shows example mappings for user <code>lengstrom</code>'s gitlinks repository
+<a href="https://github.com/lengstrom/goto">goto</a>:
 </p>
 
 | Key           | URL                                                                                   | GitHub Pages Reference                                                                        |
 | :------------ | :------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
-| `zoom`        | <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>     | <a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>               |
-| `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/go/classes/nlp">http://loganengstrom.com/go/classes/nlp</a> |
+| `zoom`        | <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>     | <a href="http://loganengstrom.com/goto/zoom">http://loganengstrom.com/go/zoom</a>               |
+| `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/goto/classes/nlp">http://loganengstrom.com/go/classes/nlp</a> |
 
 <p>
     Here, if user <code>lengstrom</code>
     maps <code>zoom</code> to <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>,
     he (or any other user) can then access it at
-    <a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>
+    <a href="http://loganengstrom.com/goto/zoom">http://loganengstrom.com/goto/zoom</a>
     (since the GitHub pages site <code>lengstrom.github.io</code> maps to <code>loganengstrom.com</code>).
     We can also organize keys through nesting, such as with <code>classes/NLP</code>.
 </p>
@@ -46,14 +47,27 @@ $ gitlinks delete zoom
 ```
 ```
 $ gitlinks show
-  == GitLinks (Remote: git@github.com:lengstrom/go.git) ==
-  classes/nlp     →   https://canvas.mit.edu/courses/7503
-  unadversarial   →   https://arxiv.org/abs/2012.12235
-  zoom            →   https://mit.zoom.us/j/95091088705
+  => Checking for changes from remote...
+  == GitLinks (Remote: git@github.com:lengstrom/goto.git) ==
+  chungus                  →   https://en.wikipedia.org/wiki/Chungus
+  classes/18.100b          →   https://www.math.ubc.ca/~jzahl/teaching/18_100B_S2016/18100B.html
+  classes/18.102           →   http://math.mit.edu/~rbm/18-102-S17/
+  classes/6.005            →   http://web.mit.edu/6.031/www/fa18/general/
+  classes/nlp              →   https://canvas.mit.edu/courses/7503
+  friends/ilyas            →   http://andrewilyas.com
+  friends/kwokchain        →   https://twitter.com/antimatter15
+  friends/negan            →   https://nicholasegan.me
+  friends/nomo             →   https://noahmoroze.com
+  friends/penger           →   http://tonypeng.com
+  friends/yang             →   https://yang.money
+  github                   →   https://github.com/lengstrom
+  papers/bugsnotfeatures   →   https://arxiv.org/abs/1905.02175
+  papers/robusttransfer    →   https://arxiv.org/abs/2007.08489
+  papers/unadversarial     →   https://arxiv.org/abs/2012.12235
 ```
 <p>
     <code>gitlinks</code> also generates an index page for your GitLinks: see 
-    http://loganengstrom.com/go/ as an example!
+    http://loganengstrom.com/goto/ as an example.
 </p>
 
 # Setup

@@ -88,8 +88,13 @@ def try_setup(repo, path, index_name):
 def template_maker(url):
     return f'<meta http-equiv="refresh" content="0; URL={url}"/>'
 
-def prettify_list(ls):
-    return ", ".join(map(lambda x:f'"{bolded(x)}"', ls))
+def prettify_list(ls, bold=True):
+    if bold:
+        func = lambda x:f'"{bolded(x)}"'
+    else:
+        func = lambda x:f'"{x}"'
+
+    return ", ".join(map(func, ls))
 
 def generate_pages(df, working_dir, index_name):
     wd = Path(working_dir)
@@ -133,9 +138,9 @@ def url_exists(url):
     except:
         return False
 
-def plural_msg(ls, fmt_str):
+def plural_msg(ls, fmt_str, bold=True):
     plural = 's' if len(ls) > 1 else ''
-    keys_pretty = prettify_list(ls)
+    keys_pretty = prettify_list(ls, bold=bold)
     return fmt_str.format(plural=plural, keys_pretty=keys_pretty)
 
 def reset_origin(repo):

@@ -104,7 +104,8 @@ def execute(args, git_path=GIT_PATH):
         assert key[-1] != '/', f'Key "{key}" should not end with a "/"!'
         url = args['<url>']
         df = set_link(key, url, df)
-        commit_msg = f'Set key "{bolded(key)}" {bolded(ARROW)} "{bolded(url)}"'
+        print_msg = f'Set key "{bolded(key)}" {bolded(ARROW)} "{bolded(url)}"'
+        commit_msg = f'Set key "{key}" {ARROW} "{url}"'
     elif args['delete']:
         keys = args['<key>']
         poss = set(df.key)
@@ -116,7 +117,10 @@ def execute(args, git_path=GIT_PATH):
             msg = 'Key{plural} {keys_pretty} not present...'
             pprint(plural_msg(not_deletable, msg))
 
-        commit_msg = plural_msg(deletable, 'Deleted key{plural} {keys_pretty}')
+        msg = 'Deleted key{plural} {keys_pretty}'
+        print_msg = plural_msg(deletable, msg, bold=True)
+        commit_msg = plural_msg(deletable, msg, bold=False)
+
         if len(deletable) == 0:
             pprint('No keys to remove, exiting!')
             return
@@ -127,7 +131,7 @@ def execute(args, git_path=GIT_PATH):
     try:
         pprint('Committing and pushing...')
         commit_push(repo, commit_msg[:50])
-        pprint(f'{bolded("Success")}: {commit_msg}.')
+        pprint(f'{bolded("Success")}: {print_msg}.')
     except Exception as e:
         reset_origin(repo)
         pprint(f'Failed; rolling back.')
