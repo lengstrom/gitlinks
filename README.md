@@ -63,7 +63,7 @@ $ gitlinks show
   papers/unadversarial     →   https://arxiv.org/abs/2012.12235
 ```
 <p>
-    <code>gitlinks</code> also generates an index page for your GitLinks: see 
+    <code>gitlinks</code> also generates an index page: see 
     http://loganengstrom.com/goto/ as an example.
 </p>
 
@@ -92,6 +92,9 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
     Your <code>remote_url</code> can be found here:
 </p>
 <img src="static/remote_url.png"/>
+<p>
+    After this step, you should be able to make golinks to your heart's content.  
+</p>
 
 # Shoutouts
 - Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
