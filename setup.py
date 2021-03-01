@@ -13,6 +13,17 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url='https://github.com/lengstrom/gitlinks',
     packages=setuptools.find_packages(),
+    install_requires=[
+        'docopt>=0.6.2',
+        'GitPython>=3.1.13',
+        'ilock>=1.0.3',
+        'pandas>=1.2.2',
+        'portalocker>=2.2.1',
+        'requests>=2.25.1',
+        'requests-toolbelt>=0.9.1',
+        'tabulate>=0.8.9',
+        'tqdm>=4.58.0'
+    ],
     entry_points={
         'console_scripts':[
             'gitlinks=gitlinks.cli:main'

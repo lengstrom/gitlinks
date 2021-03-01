@@ -5,7 +5,6 @@ import pandas as pd
 import shutil
 import sys
 from pathlib import Path
-import tqdm
 import requests
 
 ARROW = '→'
