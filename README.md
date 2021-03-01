@@ -8,7 +8,7 @@
     <img src="static/demo.gif"/>
     </p>
     <p align = 'center'>
-        <a href="#setup">Jump to setup!</a>
+        <a href="#setup">Jump to setup!</a> | <a href="https://twitter.com/logan_engstrom">Follow me on Twitter</a>
     </p>
 </p>
 
@@ -77,8 +77,8 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 ## Initialize `gitlinks` locally
 <p>
     Install the <code>gitlinks</code> executable via <code>pip</code>: <code>pip install gitlinks</code>. Then, 
-    initialize <code>gitlinks</code> to use the repository above: <code>gitlinks init remote_url</code>---where your remote URL
-    can be found here:
+    initialize <code>gitlinks</code> to use your repository: <code>gitlinks init remote_url</code>.
+    Your <code>remote_url</code> can be found here:
 </p>
 <img src="static/remote_url.png"/>
 
