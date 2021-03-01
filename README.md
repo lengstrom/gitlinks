@@ -22,8 +22,8 @@ The following table shows example mappings for user <code>lengstrom</code>'s git
 
 | Key           | URL                                                                                   | GitHub Pages Reference                                                                        |
 | :------------ | :------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
-| `zoom`        | <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>     | <a href="http://loganengstrom.com/goto/zoom">http://loganengstrom.com/go/zoom</a>               |
-| `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/goto/classes/nlp">http://loganengstrom.com/go/classes/nlp</a> |
+| `zoom`        | <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>     | <a href="http://loganengstrom.com/goto/zoom">http://loganengstrom.com/goto/zoom</a>               |
+| `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/goto/classes/nlp">http://loganengstrom.com/goto/classes/nlp</a> |
 
 <p>
     Here, if user <code>lengstrom</code>
