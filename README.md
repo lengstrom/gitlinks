@@ -5,6 +5,7 @@
     <code>pip install gitlinks</code>
     <br/>
     (<a href="#setup">Jump to setup!</a>)
+    <img src="static/demo.gif"/>
 </p>
 
 # Quick Overview
