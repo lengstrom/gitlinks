@@ -57,7 +57,7 @@ First, visit https://github.com/new and choose a short, memorable name like
 </p>
 <img src="static/make_repo.png"/>
 <p>
-Now, check the box "Add a README file".
+Now, check the box "Add a README file" (the repository can't be empty).
 </p>
 <img src="static/add_readme.png"/>
 <p>
