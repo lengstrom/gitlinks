@@ -1,6 +1,6 @@
-# `gitlinks` - Git Powered Go Links
+# `gitlinks` - Git Powered Go-Links
 <p align = 'center'>
-    Hosted "<a href="https://yiou.me/blog/posts/google-go-link">Go Links</a>" via Git and <a href="https://pages.github.com">GitHub Pages</a>
+    Hosted "<a href="https://yiou.me/blog/posts/google-go-link">Go-Links</a>" via Git and <a href="https://pages.github.com">GitHub Pages</a>
     <br/>
     <code>pip install gitlinks</code>
     <br/>
@@ -94,7 +94,7 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 </p>
 <img src="static/remote_url.png"/>
 <p>
-    After this step, you should be able to make go links to your heart's content.  
+    After this step, you should be able to make go-links to your heart's content.  
 </p>
 
 # Big Shoutouts
