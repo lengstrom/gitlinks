@@ -1,6 +1,6 @@
 # `gitlinks` - Git Powered Go Links
 <p align = 'center'>
-    Managed, memorable shortlinks via Git and <a href="https://pages.github.com">GitHub Pages</a>
+    Hosted Go Links via Git and <a href="https://pages.github.com">GitHub Pages</a>
     <br/>
     <code>pip install gitlinks</code>
     <br/>
