@@ -6,6 +6,7 @@ import shutil
 import sys
 from pathlib import Path
 import tqdm
+import requests
 
 ARROW = '→'
 
@@ -89,7 +90,7 @@ def generate_pages(df, working_dir, index_name):
     wipe_directory(wd, protected)
 
     print('=> Rebuilding HTML...')
-    iterator = df.iterrows()
+    iterator = df.sort_values('key').iterrows()
     inner_list = []
     for _, row in iterator:
         key, url = row.key, row.url
@@ -115,10 +116,9 @@ a {{ color: black }}
 td:nth-child(1) {{ text-align: right }}
 </style>
 <h1>gitlinks</h1>
-<table><tbody>{"".join(reversed(inner_list))}</tbody></table>
+<table><tbody>{"".join((inner_list))}</tbody></table>
 ''')
 
-import requests
 def url_exists(url):
     try:
         request = requests.get(url, timeout=0.5)
