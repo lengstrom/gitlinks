@@ -4,8 +4,10 @@
     <br/>
     <code>pip install gitlinks</code>
     <br/>
-    (<a href="#setup">Jump to setup!</a>)
+    <p>
     <img src="static/demo.gif"/>
+    <a href="#setup">Jump to setup!</a>
+    </p>
 </p>
 
 # Quick Overview
