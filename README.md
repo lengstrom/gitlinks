@@ -6,8 +6,8 @@
     <br/>
     <p>
     <img src="static/demo.gif"/>
-    <a href="#setup">Jump to setup!</a>
     </p>
+    <a href="#setup">Jump to setup!</a>
 </p>
 
 # Quick Overview
