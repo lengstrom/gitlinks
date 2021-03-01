@@ -1,4 +1,4 @@
-# `gitlinks` - Git Powered Go-Links
+# Git Powered Go-Links with `gitlinks`
 <p align = 'center'>
     Hosted "<a href="https://yiou.me/blog/posts/google-go-link">Go-Links</a>" via Git and <a href="https://pages.github.com">GitHub Pages</a>
     <br/>
