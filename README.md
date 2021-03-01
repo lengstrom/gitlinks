@@ -96,9 +96,10 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
     After this step, you should be able to make golinks to your heart's content.  
 </p>
 
-# Shoutouts
+# Big Shoutouts
 - Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
-- Michael Yang ([Twitter](https://twitter.com/themichaelyang), [Website](http://yang.money)) - for some massive PRs and aesthetics expertise!
+- Michael Yang ([Twitter](https://twitter.com/themichaelyang), [Website](http://yang.money)) - for critical contributions including the index page, the fancy arrows, and finding several SEV0 bugs.
+- Andrew Ilyas ([Twitter](https://twitter.com/andrew_ilyas), [Website](http://andrewilyas.com))
 
 # License
 GPL v3
