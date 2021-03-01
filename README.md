@@ -57,12 +57,11 @@ $ gitlinks show
 </p>
 
 # Setup
-Setup `gitlinks` in two ez steps!
+Configure `gitlinks` in two steps!
 ## First: Cook up a new GitHub Repository
 <p>
 First, visit https://github.com/new and choose a short, memorable name like
-<code>go</code> for your repository. Remember, a short shortlink <code>key</code> will reside at
-<code>yourusername.github.io/repository_name/key</code>!
+<code>go</code> for your gitlinks repository. 
 </p>
 <img src="static/make_repo.png"/>
 <p>
