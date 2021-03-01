@@ -46,6 +46,10 @@ $ gitlinks show
   unadversarial   →   https://arxiv.org/abs/2012.12235
   zoom            →   https://mit.zoom.us/j/95091088705
 ```
+<p>
+    <code>gitlinks</code> also generates an index page for your GitLinks: see 
+    http://loganengstrom.com/go/ as an example!
+</p>
 
 # Setup
 Setup `gitlinks` in two easy steps!
@@ -68,8 +72,8 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 
 ## Initialize `gitlinks` locally
 <p>
-    Install the `gitlinks` executable via `pip`: `pip install gitlinks`. Then, 
-    initialize `gitlinks` to use the repository above: `gitlinks init <remote url>`---where your remote URL
+    Install the <code>gitlinks</code> executable via <code>pip</code>: <code>pip install gitlinks</code>. Then, 
+    initialize <code>gitlinks</code> to use the repository above: <code>gitlinks init remote_url</code>---where your remote URL
     can be found here:
 </p>
 <img src="static/remote_url.png"/>
