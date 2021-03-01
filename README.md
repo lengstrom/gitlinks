@@ -1,6 +1,8 @@
-# `gitlinks` - Git Powered Go Links!
+# `gitlinks` - Git Powered Go Links
 <p align = 'center'>
-    Map memorable keys to URLS using Git and <a href="https://pages.github.com">GitHub Pages</a>: <code>pip install gitlinks</code>
+    Map memorable keys to URLS using Git and <a href="https://pages.github.com">GitHub Pages</a>
+    <br/>
+    <code>pip install gitlinks</code>
     <br/>
     <p>
     <img src="static/demo.gif"/>
