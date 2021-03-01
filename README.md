@@ -50,17 +50,14 @@ $ gitlinks show
   => Checking for changes from remote...
   == GitLinks (Remote: git@github.com:lengstrom/goto.git) ==
   chungus                  →   https://en.wikipedia.org/wiki/Chungus
-  classes/18.100b          →   https://www.math.ubc.ca/~jzahl/teaching/18_100B_S2016/18100B.html
   classes/18.102           →   http://math.mit.edu/~rbm/18-102-S17/
   classes/6.005            →   http://web.mit.edu/6.031/www/fa18/general/
   classes/nlp              →   https://canvas.mit.edu/courses/7503
   friends/ilyas            →   http://andrewilyas.com
   friends/kwokchain        →   https://twitter.com/antimatter15
-  friends/negan            →   https://nicholasegan.me
   friends/nomo             →   https://noahmoroze.com
   friends/penger           →   http://tonypeng.com
   friends/yang             →   https://yang.money
-  github                   →   https://github.com/lengstrom
   papers/bugsnotfeatures   →   https://arxiv.org/abs/1905.02175
   papers/robusttransfer    →   https://arxiv.org/abs/2007.08489
   papers/unadversarial     →   https://arxiv.org/abs/2012.12235
