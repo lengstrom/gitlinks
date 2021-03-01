@@ -1,8 +1,6 @@
 # `gitlinks` - Git Powered Go Links!
 <p align = 'center'>
-    Map memorable keys to URLS using Git and <a href="https://pages.github.com">GitHub Pages</a>.
-    <br/>
-    <code>pip install gitlinks</code>
+    Map memorable keys to URLS using Git and <a href="https://pages.github.com">GitHub Pages</a>: <code>pip install gitlinks</code>
     <br/>
     <p>
     <img src="static/demo.gif"/>
@@ -19,7 +17,7 @@
 The following table shows example mappings for user <code>lengstrom</code>:
 </p>
 
-| Key           | Url                                                                                   | GitHub Pages Reference                                                                        |
+| Key           | URL                                                                                   | GitHub Pages Reference                                                                        |
 | :------------ | :------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
 | `zoom`        | <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>     | <a href="http://loganengstrom.com/go/zoom">http://loganengstrom.com/go/zoom</a>               |
 | `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/go/classes/nlp">http://loganengstrom.com/go/classes/nlp</a> |
@@ -57,7 +55,7 @@ $ gitlinks show
 </p>
 
 # Setup
-Setup `gitlinks` in two easy steps!
+Setup `gitlinks` in two ez steps!
 ## First: Cook up a new GitHub Repository
 <p>
 First, visit https://github.com/new and choose a short, memorable name like
