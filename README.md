@@ -7,7 +7,9 @@
     <p>
     <img src="static/demo.gif"/>
     </p>
-    <a href="#setup">Jump to setup!</a>
+    <p align = 'center'>
+        <a href="#setup">Jump to setup!</a>
+    </p>
 </p>
 
 # Quick Overview
