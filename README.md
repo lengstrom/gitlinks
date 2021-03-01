@@ -34,7 +34,8 @@ The following table shows example mappings for user <code>lengstrom</code>'s git
     We can also organize keys through nesting, such as with <code>classes/NLP</code>.
 </p>
 <p>
-    Add, remove, and visualize link mappings through the command line!
+    <code>gitlinks</code> works by <a href="https://github.com/lengstrom/goto/blob/main/index.csv">storing state on GitHub</a>
+    and <a href="https://github.com/lengstrom/goto">rendering structured redirects on GitHub pages</a>. Add, remove, and visualize link mappings through the command line!
 </p>
 
 ```
