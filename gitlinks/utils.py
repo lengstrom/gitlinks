@@ -125,7 +125,7 @@ body {{
     line-height: 1.5;
 }}
 a {{ color: black }}
-td:nth-child(1) {{ text-align: right }}
+td:nth-child(1) {{ text-align: left }}
 </style>
 <h1>gitlinks</h1>
 <table><tbody>{"".join((inner_list))}</tbody></table>
