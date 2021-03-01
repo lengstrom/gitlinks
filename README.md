@@ -8,7 +8,7 @@
     <img src="static/demo.gif"/>
     </p>
     <p align = 'center'>
-        <a href="#setup">Jump to setup!</a> | <a href="https://twitter.com/logan_engstrom">Follow me on Twitter</a>
+        <a href="#setup">Jump to setup</a> | <a href="https://twitter.com/logan_engstrom">Follow me on Twitter</a>
     </p>
 </p>
 
