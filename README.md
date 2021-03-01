@@ -14,13 +14,13 @@
 
 # Quick Overview
 <p>
-<code>gitlinks</code> is a command line tool that maps keys to URLs via 
-<a href="https://git-scm.com">Git</a> and <a href="https://pages.github.com">GitHub Pages</a>.
+<code>gitlinks</code> is a command line tool that maps custom shortlinks to URLs via 
+<a href="https://git-scm.com">Git</a> and <a href="https://pages.github.com">GitHub Pages</a> .
 The following table shows example mappings for user <code>lengstrom</code>'s gitlinks repository
 <a href="https://github.com/lengstrom/goto">goto</a>:
 </p>
 
-| Key           | URL                                                                                   | GitHub Pages Reference                                                                        |
+| Key           | URL                                                                                   | GitHub Pages Shortlink                                                                        |
 | :------------ | :------------------------------------------------------------------------------------ | :-------------------------------------------------------------------------------------------- |
 | `zoom`        | <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>     | <a href="http://loganengstrom.com/goto/zoom">http://loganengstrom.com/goto/zoom</a>               |
 | `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/goto/classes/nlp">http://loganengstrom.com/goto/classes/nlp</a> |
@@ -93,7 +93,7 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 </p>
 <img src="static/remote_url.png"/>
 <p>
-    After this step, you should be able to make golinks to your heart's content.  
+    After this step, you should be able to make go links to your heart's content.  
 </p>
 
 # Big Shoutouts
