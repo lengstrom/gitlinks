@@ -63,9 +63,10 @@ $ gitlinks show
   papers/robusttransfer    →   https://arxiv.org/abs/2007.08489
   papers/unadversarial     →   https://arxiv.org/abs/2012.12235
 ```
+
 <p>
     <code>gitlinks</code> also generates an index page: see 
-    http://loganengstrom.com/goto/ as an example.
+    http://loganengstrom.com/goto/ as an example. The big caveat of `gitlinks` is that <b>all of your links are public to anyone on the web</b>, so be careful with what you link!
 </p>
 
 # Setup
