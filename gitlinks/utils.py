@@ -8,6 +8,7 @@ from pathlib import Path
 import requests
 
 ARROW = '→'
+DEFAULT_PROTECTED = ['.git', 'CNAME']
 
 def pprint(x):
     msg = bolded('=> ') + x
@@ -55,7 +56,7 @@ def check_repo(repo, index_name):
         return False
 
 def wipe_directory(dired, protected):
-    protected = set(protected)
+    protected = set(protected + DEFAULT_PROTECTED)
     for child in dired.iterdir():
         if child.name not in protected:
             if child.is_dir():
@@ -95,8 +96,12 @@ def prettify_list(ls, bold=True):
 
     return ", ".join(map(func, ls))
 
-def generate_pages(df, working_dir, index_name):
+def generate_pages(df, working_dir, index_name, cname=None):
     wd = Path(working_dir)
+    if cname != None:
+        with open(wd / 'CNAME', 'w+') as f:
+            f.write(cname)
+
     protected = ['.git', index_name]
     wipe_directory(wd, protected)
 

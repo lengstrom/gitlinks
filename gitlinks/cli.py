@@ -7,6 +7,7 @@ Usage:
   gitlinks set <key> <url>
   gitlinks delete <key> ...
   gitlinks show
+  gitlinks cname <CNAME>
 
 Options:
   -h --help     Show this screen.
@@ -125,8 +126,15 @@ def execute(args, git_path=GIT_PATH):
             pprint('No keys to remove, exiting!')
             return
 
+    if args['CNAME']:
+        cname = args['<cname>']
+        print_msg = f'Set CNAME to {cname}.'
+        commit_msg = print_msg
+    else:
+        cname = None
+
     serialize_csv(df, csv_path)
-    generate_pages(df, git_path, INDEX_NAME)
+    generate_pages(df, git_path, INDEX_NAME, cname)
 
     try:
         pprint('Committing and pushing...')
