@@ -8,6 +8,7 @@ Usage:
   gitlinks delete <key> ...
   gitlinks show
   gitlinks cname <CNAME>
+  gitlinks google-analytics <property-id>
 
 Options:
   -h --help     Show this screen.
@@ -25,11 +26,21 @@ from ilock import ILock
 from .utils import (
     clone, query_yes_no, try_setup, serialize_csv, load_csv, commit_push,
     check_repo, generate_pages, plural_msg, clean, patch_url, reset_origin,
-    ARROW, bolded, pprint
+    ARROW, bolded, pprint, try_state
 )
 
 GIT_PATH = Path('~/.gitlinks/').expanduser()
 INDEX_NAME = 'index.csv'
+META_NAME = 'state.json'
+
+def get_state():
+    return try_state(GIT_PATH, META_NAME)
+
+def set_state(k, v):
+    state = get_state()
+    state[k] = v
+    json.dump(state, open(GIT_PATH / META_NAME, 'w+'))
+    return state
 
 def initialize(url, path=GIT_PATH):
     if path.exists():
@@ -41,7 +52,7 @@ def initialize(url, path=GIT_PATH):
             return
 
     repo = clone(url, path)
-    try_setup(repo, path, INDEX_NAME)
+    try_setup(repo, path, INDEX_NAME, META_NAME)
     pprint(f'Initialized gitlinks via {url}!')
 
 def set_link(key, url, df):
@@ -77,6 +88,12 @@ def show(df, repo):
         print(rows)
     else:
         pprint('Empty, no keys to display!')
+
+    state = get_state()
+    if len(state.keys()) > 0:
+        pprint('State:')
+        for k, v in state.items():
+            pprint(f'=> {k} = {v}')
 
 def execute(args, git_path=GIT_PATH):
     if args['init']:
@@ -126,15 +143,25 @@ def execute(args, git_path=GIT_PATH):
             pprint('No keys to remove, exiting!')
             return
 
-    if args['CNAME']:
-        cname = args['<cname>']
+    if args['cname']:
+        cname = args['<CNAME>']
+        set_state('CNAME', cname)
         print_msg = f'Set CNAME to {cname}.'
         commit_msg = print_msg
     else:
         cname = None
 
+    if args['google-analytics']:
+        prop_id = args['property-id']
+        if not prop_id[:3] == 'UA-':
+            prop_id = 'UA-' + prop_id
+
+        set_state('GA Property ID', prop_id)
+        print_msg = f'Set GA Property ID to {prop_id}'
+        commit_msg = print_msg
+
     serialize_csv(df, csv_path)
-    generate_pages(df, git_path, INDEX_NAME, cname)
+    generate_pages(df, git_path, INDEX_NAME, get_state())
 
     try:
         pprint('Committing and pushing...')

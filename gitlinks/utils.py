@@ -6,9 +6,27 @@ import shutil
 import sys
 from pathlib import Path
 import requests
+import json
 
 ARROW = '→'
 DEFAULT_PROTECTED = ['.git', 'CNAME']
+GA = """
+<!-- Google Analytics -->
+<script>
+(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+ga('create', '{}', 'auto');
+ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+"""
+
+def try_state(git_path, meta_name):
+    p = Path(git_path / meta_name)
+    return json.load(p)
 
 def pprint(x):
     msg = bolded('=> ') + x
@@ -58,19 +76,23 @@ def check_repo(repo, index_name):
 def wipe_directory(dired, protected):
     protected = set(protected + DEFAULT_PROTECTED)
     for child in dired.iterdir():
-        if child.name not in protected:
+        not_protected = child.name not in protected
+        is_dir = child.is_dir()
+        is_index = child.name == 'index.html'
+        if not_protected and (is_dir or is_index):
             if child.is_dir():
                 shutil.rmtree(child)
             else:
                 child.unlink()
 
-def try_setup(repo, path, index_name):
+def try_setup(repo, path, index_name, state_name):
     # path is the path of a git repository
     # Clean up any non-tracked changes
     # Then check if there's an index.csv; if so, exit
     # If no index.csv, delete everything in repo, make an empty index.csv
     clean(repo)
     index_path = path / index_name
+    state_path = path / state_name
 
     if not check_repo(repo, index_name):
         pprint('Index not found; initializing index!')
@@ -79,6 +101,8 @@ def try_setup(repo, path, index_name):
 
         empty = empty_csv()
         serialize_csv(empty, index_path)
+        json.dump({}, open(state_path, 'w+'))
+
         try:
             commit_push(repo, 'Initialization')
         except Exception as e:
@@ -96,11 +120,16 @@ def prettify_list(ls, bold=True):
 
     return ", ".join(map(func, ls))
 
-def generate_pages(df, working_dir, index_name, cname=None):
+def generate_pages(df, working_dir, index_name, state):
     wd = Path(working_dir)
-    if cname != None:
-        with open(wd / 'CNAME', 'w+') as f:
+    if 'CNAME' in state:
+        cname = state['CNAME']
+        with open(wd / cname, 'w+') as f:
             f.write(cname)
+    if 'GA Property ID' in state:
+        prop_id = state['GA Property ID']
+    else:
+        prop_id = None
 
     protected = ['.git', index_name]
     wipe_directory(wd, protected)
@@ -120,7 +149,7 @@ def generate_pages(df, working_dir, index_name, cname=None):
         inner_list.append(f'<tr><td><a href="{key}">{key}</a></td><td>{ARROW}</td><td><a href="{url}">{url}</a></td></li>')
 
     with open(wd / 'index.html', 'w+') as index_file:
-        index_file.write(f'''
+        html = (f'''
 <title>gitlinks</title>
 <style>
 body {{
@@ -132,8 +161,11 @@ a {{ color: black }}
 td:nth-child(1) {{ text-align: left }}
 </style>
 <h1>gitlinks</h1>
-<table><tbody>{"".join((inner_list))}</tbody></table>
-''')
+<table><tbody>{"".join((inner_list))}</tbody></table>''')
+        if prop_id:
+            html = html + GA.format(prop_id)
+
+        index_file.write(html)
 
 def url_exists(url):
     try:
