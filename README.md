@@ -8,7 +8,7 @@
     <img src="static/demo.gif"/>
     </p>
     <p align = 'center'>
-        <a href="#setup">Jump to setup</a> | <a href="https://twitter.com/logan_engstrom">Follow me on Twitter</a>
+        <a href="#setup">Jump to setup</a> | By <a href="https://twitter.com/logan_engstrom">@logan_engstrom</a>
     </p>
 </p>
 
@@ -50,15 +50,11 @@ $ gitlinks delete zoom
 $ gitlinks show
   => Checking for changes from remote...
   == GitLinks (Remote: git@github.com:lengstrom/goto.git) ==
-  chungus                  →   https://en.wikipedia.org/wiki/Chungus
   classes/18.102           →   http://math.mit.edu/~rbm/18-102-S17/
   classes/6.005            →   http://web.mit.edu/6.031/www/fa18/general/
   classes/nlp              →   https://canvas.mit.edu/courses/7503
   friends/ilyas            →   http://andrewilyas.com
-  friends/kwokchain        →   https://twitter.com/antimatter15
-  friends/nomo             →   https://noahmoroze.com
-  friends/penger           →   http://tonypeng.com
-  friends/yang             →   https://yang.money
+  friends/realkevinkwok    →   https://twitter.com/antimatter15
   papers/bugsnotfeatures   →   https://arxiv.org/abs/1905.02175
   papers/robusttransfer    →   https://arxiv.org/abs/2007.08489
   papers/unadversarial     →   https://arxiv.org/abs/2012.12235
@@ -97,11 +93,6 @@ Then, scroll down to the GitHub Pages section, and enable it for the `main` bran
 <p>
     After this step, you should be able to make go-links to your heart's content.  
 </p>
-
-# Big Shoutouts
-- Tony Peng ([Twitter](https://twitter.com/iamtonypeng), [Website](http://tonypeng.com)) - for inspiring this project!
-- Michael Yang ([Twitter](https://twitter.com/themichaelyang), [Website](http://yang.money)) - for critical contributions including the index page, the fancy arrows, and finding several SEV0 bugs.
-- Andrew Ilyas ([Twitter](https://twitter.com/andrew_ilyas), [Website](http://andrewilyas.com))
 
 # License
 GPL v3
