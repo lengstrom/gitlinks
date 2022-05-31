@@ -26,9 +26,8 @@ The following table shows example mappings for user <code>lengstrom</code>'s git
 | `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/goto/classes/nlp">http://loganengstrom.com/goto/classes/nlp</a> |
 
 <p>
-    Here, if user <code>lengstrom</code>
-    maps <code>zoom</code> to <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>,
-    he (or any other user) can then access it at
+    Here, anyone can access the
+    <code>zoom</code> link (<a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>) at
     <a href="http://loganengstrom.com/goto/zoom">http://loganengstrom.com/goto/zoom</a>
     (since the GitHub pages site <code>lengstrom.github.io</code> maps to <code>loganengstrom.com</code>).
     We can also organize keys through nesting, such as with <code>classes/NLP</code>.
