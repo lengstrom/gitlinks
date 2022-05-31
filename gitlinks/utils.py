@@ -26,7 +26,7 @@ ga('send', 'pageview');
 
 def try_state(git_path, meta_name):
     p = Path(git_path / meta_name)
-    return json.load(p)
+    return json.load(open(p, 'r'))
 
 def pprint(x):
     msg = bolded('=> ') + x
@@ -95,7 +95,7 @@ def try_setup(repo, path, index_name, state_name):
     state_path = path / state_name
 
     if not check_repo(repo, index_name):
-        pprint('Index not found; initializing index!')
+        pprint('Not a valid repo; reinitializing.')
         # delete everything in directory
         wipe_directory(path, ['.git'])
 
