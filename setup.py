@@ -58,7 +58,7 @@ tests_requires = [
     'pytest<5.0'
 ]
 
-__version__ = str(0.2)
+__version__ = str(0.3)
 
 
 # brought from https://github.com/kennethreitz/setup.py
