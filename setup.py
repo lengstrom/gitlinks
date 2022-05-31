@@ -40,15 +40,6 @@ def read_readme():
     with open('README.md') as f:
         return f.read()
 
-def read_version():
-    # importing the package causes an ImportError :-)
-    with open(os.path.join(__PATH__, 'imgcat/__init__.py')) as f:
-        version_match = re.search(r"^__version__ = ['\"]([^'\"]*)['\"]",
-                                  f.read(), re.M)
-    if version_match:
-        return version_match.group(1)
-    raise RuntimeError("Unable to find __version__ string")
-
 
 install_requires = [
     'docopt>=0.6.2',
@@ -67,7 +58,7 @@ tests_requires = [
     'pytest<5.0'
 ]
 
-__version__ = read_version()
+__version__ = str(0.2)
 
 
 # brought from https://github.com/kennethreitz/setup.py
@@ -120,7 +111,7 @@ setup(
     description='GitHub pages-powered golinks',
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url='https://github.com/lengstrom/gitlinks',,
+    url='https://github.com/lengstrom/gitlinks',
     author='Logan Engstrom',
     author_email='engstrom@mit.com',
     keywords='golinks github pages',
@@ -132,7 +123,7 @@ setup(
         'Programming Language :: Python :: 2.7',
         'Programming Language :: Python :: 3',
     ],
-    packages=['imgcat'],
+    packages=['gitlinks'],
     install_requires=install_requires,
     setup_requires=['pytest-runner<5.0'],
     tests_require=tests_requires,
@@ -143,5 +134,5 @@ setup(
     zip_safe=False,
     cmdclass={
         'deploy': DeployCommand,
-    }
+    },
     python_requires=">=3.6")
