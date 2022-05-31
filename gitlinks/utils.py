@@ -139,7 +139,6 @@ def generate_pages(df, working_dir, index_name, state):
     inner_list = []
     for _, row in iterator:
         key, url = row.key, row.url
-        import pdb; pdb.set_trace()
         html_file = wd / (key + '/index.html')
         parent = html_file.parent
         parent.mkdir(exist_ok=True, parents=True)
