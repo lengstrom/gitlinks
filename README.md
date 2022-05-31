@@ -26,9 +26,8 @@ The following table shows example mappings for user <code>lengstrom</code>'s git
 | `classes/NLP` | <a href="https://canvas.mit.edu/courses/7503">https://canvas.mit.edu/courses/7503</a> | <a href="http://loganengstrom.com/goto/classes/nlp">http://loganengstrom.com/goto/classes/nlp</a> |
 
 <p>
-    Here, if user <code>lengstrom</code>
-    maps <code>zoom</code> to <a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>,
-    he (or any other user) can then access it at
+    Here, anyone can access the
+    <code>zoom</code> link (<a href="https://mit.zoom.us/j/95091088705">https://mit.zoom.us/j/95091088705</a>) at
     <a href="http://loganengstrom.com/goto/zoom">http://loganengstrom.com/goto/zoom</a>
     (since the GitHub pages site <code>lengstrom.github.io</code> maps to <code>loganengstrom.com</code>).
     We can also organize keys through nesting, such as with <code>classes/NLP</code>.
@@ -48,15 +47,15 @@ $ gitlinks delete zoom
 ```
 ```
 $ gitlinks show
-  => Checking for changes from remote...
-  == GitLinks (Remote: git@github.com:lengstrom/goto.git) ==
-  classes/18.102           →   http://math.mit.edu/~rbm/18-102-S17/
-  classes/6.005            →   http://web.mit.edu/6.031/www/fa18/general/
-  classes/nlp              →   https://canvas.mit.edu/courses/7503
-  calendly                 →   https://calendly.com/loganengstrom
-  papers/bugsnotfeatures   →   https://arxiv.org/abs/1905.02175
-  papers/robusttransfer    →   https://arxiv.org/abs/2007.08489
-  papers/unadversarial     →   https://arxiv.org/abs/2012.12235
+=> Checking for changes from remote...
+== GitLinks (Remote: git@github.com:lengstrom/goto.git) ==
+calendly                 →   https://calendly.com/loganengstrom
+classes/18.102           →   http://math.mit.edu/~rbm/18-102-S17/
+classes/6.005            →   http://web.mit.edu/6.031/www/fa18/general/
+ffcv_slack               →   https://ffcv-workspace.slack.com/join/shared_invite/zt-11olgvyfl-dfFerPxlm6WtmlgdMuw_2A#/shared-invite/email
+papers/bugsnotfeatures   →   https://arxiv.org/abs/1905.02175
+zombocom                 →   https://www.zombo.com
+zoom                     →   https://mit.zoom.us/j/95091088705
 ```
 
 <p>
@@ -77,8 +76,8 @@ Now, check the box "Add a README file" (the repository can't be empty).
 </p>
 <img src="static/add_readme.png"/>
 <p>
-Make the repository, then go your repository's GitHub pages settings (e.g. <code>https://github.com/yourusername/repository_name/settings/pages</code>).
-Enable GitHub pages for the `main` branch:
+Make the repository, then go your repository's GitHub pages settings: 
+    <code>https://github.com/yourusername/repository_name/settings/pages</code>) and <b>enable GitHub pages</b> for the <code>main</code> branch:
 </p>
 <img src="static/enable_ghpages.png"/>
 
