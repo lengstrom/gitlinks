@@ -53,8 +53,7 @@ $ gitlinks show
   classes/18.102           →   http://math.mit.edu/~rbm/18-102-S17/
   classes/6.005            →   http://web.mit.edu/6.031/www/fa18/general/
   classes/nlp              →   https://canvas.mit.edu/courses/7503
-  friends/ilyas            →   http://andrewilyas.com
-  friends/realkevinkwok    →   https://twitter.com/antimatter15
+  calendly                 →   https://calendly.com/loganengstrom
   papers/bugsnotfeatures   →   https://arxiv.org/abs/1905.02175
   papers/robusttransfer    →   https://arxiv.org/abs/2007.08489
   papers/unadversarial     →   https://arxiv.org/abs/2012.12235
