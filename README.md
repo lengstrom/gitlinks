@@ -48,15 +48,15 @@ $ gitlinks delete zoom
 ```
 ```
 $ gitlinks show
-  => Checking for changes from remote...
-  == GitLinks (Remote: git@github.com:lengstrom/goto.git) ==
-  classes/18.102           →   http://math.mit.edu/~rbm/18-102-S17/
-  classes/6.005            →   http://web.mit.edu/6.031/www/fa18/general/
-  classes/nlp              →   https://canvas.mit.edu/courses/7503
-  calendly                 →   https://calendly.com/loganengstrom
-  papers/bugsnotfeatures   →   https://arxiv.org/abs/1905.02175
-  papers/robusttransfer    →   https://arxiv.org/abs/2007.08489
-  papers/unadversarial     →   https://arxiv.org/abs/2012.12235
+=> Checking for changes from remote...
+== GitLinks (Remote: git@github.com:lengstrom/goto.git) ==
+calendly                 →   https://calendly.com/loganengstrom
+classes/18.102           →   http://math.mit.edu/~rbm/18-102-S17/
+classes/6.005            →   http://web.mit.edu/6.031/www/fa18/general/
+ffcv_slack               →   https://ffcv-workspace.slack.com/join/shared_invite/zt-11olgvyfl-dfFerPxlm6WtmlgdMuw_2A#/shared-invite/email
+papers/bugsnotfeatures   →   https://arxiv.org/abs/1905.02175
+zombocom                 →   https://www.zombo.com
+zoom                     →   https://mit.zoom.us/j/95091088705
 ```
 
 <p>
