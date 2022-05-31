@@ -8,7 +8,6 @@ Usage:
   gitlinks delete <key> ...
   gitlinks show
   gitlinks cname <CNAME>
-  gitlinks google-analytics <property-id>
 
 Options:
   -h --help     Show this screen.
@@ -58,10 +57,10 @@ def initialize(url, path=GIT_PATH):
 def set_link(key, url, df):
     url = patch_url(url)
     df = df[df.key != key]
-    df = df.append(pd.Series({
-        'key':key,
-        'url':url
-    }), ignore_index=True)
+    df = pd.concat([df, pd.DataFrame({
+        'key':[key],
+        'url':[url]
+    })], ignore_index=True, axis=0)
 
     return df
 
@@ -150,15 +149,6 @@ def execute(args, git_path=GIT_PATH):
         commit_msg = print_msg
     else:
         cname = None
-
-    if args['google-analytics']:
-        prop_id = args['property-id']
-        if not prop_id[:3] == 'UA-':
-            prop_id = 'UA-' + prop_id
-
-        set_state('GA Property ID', prop_id)
-        print_msg = f'Set GA Property ID to {prop_id}'
-        commit_msg = print_msg
 
     serialize_csv(df, csv_path)
     generate_pages(df, git_path, INDEX_NAME, get_state())
